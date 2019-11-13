@@ -1,2 +1,2 @@
-# rl_quant
+# RL Quant
 DNN quantization with reinforcement learning
