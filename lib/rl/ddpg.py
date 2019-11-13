@@ -192,16 +192,19 @@ class DDPG(object):
 
     def select_action(self, s_t, episode, decay_epsilon=True):
         # assert episode >= self.warmup, 'Episode: {} warmup: {}'.format(episode, self.warmup)
-        action = to_numpy(self.actor(to_tensor(np.array(s_t).reshape(1, -1)))).squeeze(0)
+        actions = to_numpy(self.actor(to_tensor(np.array(s_t).reshape(1, -1)))).squeeze(0)
         delta = self.init_delta * (self.delta_decay ** (episode - self.warmup))
         # action += self.is_training * max(self.epsilon, 0) * self.random_process.sample()
         #from IPython import embed; embed() # TODO eable decay_epsilon=True
-        action = sample_from_truncated_normal_distribution(lower=self.lbound, upper=self.rbound, mu=action, sigma=delta)
-        action = np.clip(action, self.lbound, self.rbound)
+        res_actions = []
+        for action in actions:
+            action = sample_from_truncated_normal_distribution(lower=self.lbound, upper=self.rbound, mu=action, sigma=delta)
+            action = np.clip(action, self.lbound, self.rbound)
+            res_actions += [action]
         # update for log
         self.delta = delta
         # self.a_t = action
-        return action
+        return res_actions
 
     def reset(self, obs):
         pass

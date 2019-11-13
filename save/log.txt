@@ -1,0 +1,1224 @@
+#0: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.09466999999999992
+best policy: [[3, 6, 4, 4], [6, 4, 5, 4], [6, 4, 3, 5], [5, 6, 6, 6]]
+#1: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.09466999999999992
+best policy: [[3, 6, 4, 4], [6, 4, 5, 4], [6, 4, 3, 5], [5, 6, 6, 6]]
+#2: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#3: episode_reward:-0.3753 acc: 0.5100, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#4: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#5: episode_reward:0.0647 acc: 0.9500, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#6: episode_reward:-0.2253 acc: 0.6600, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#7: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#8: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#9: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#10: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#11: episode_reward:-0.2253 acc: 0.6600, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#12: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#13: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#14: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#15: episode_reward:-0.5653 acc: 0.3200, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#16: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#17: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#18: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#19: episode_reward:0.0447 acc: 0.9300, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#20: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#21: episode_reward:-0.1553 acc: 0.7300, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#22: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#23: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#24: episode_reward:-0.1453 acc: 0.7400, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#25: episode_reward:-0.0653 acc: 0.8200, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#26: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#27: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#28: episode_reward:-0.2453 acc: 0.6400, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#29: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#30: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#31: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#32: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#33: episode_reward:-0.0853 acc: 0.8000, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#34: episode_reward:0.0747 acc: 0.9600, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#35: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#36: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#37: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#38: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#39: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#40: episode_reward:-0.1253 acc: 0.7600, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#41: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#42: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#43: episode_reward:-0.0853 acc: 0.8000, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#44: episode_reward:0.0747 acc: 0.9600, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#45: episode_reward:-0.2953 acc: 0.5900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#46: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#47: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#48: episode_reward:-0.2853 acc: 0.6000, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#49: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#50: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#51: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#52: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#53: episode_reward:0.0747 acc: 0.9600, weight: 0.0000 MB
+best reward: 0.10466999999999993
+best policy: [[4, 6, 5, 5], [3, 6, 3, 5], [5, 4, 5, 4], [4, 6, 5, 5]]
+#54: episode_reward:0.1147 acc: 1.0000, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#55: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#56: episode_reward:0.0647 acc: 0.9500, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#57: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#58: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#59: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#60: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#61: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#62: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#63: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#64: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#65: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#66: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#67: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#68: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#69: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#70: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#71: episode_reward:-0.4753 acc: 0.4100, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#72: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#73: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#74: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#75: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#76: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#77: episode_reward:0.0747 acc: 0.9600, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#78: episode_reward:0.1147 acc: 1.0000, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#79: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#80: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#81: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#82: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#83: episode_reward:0.1147 acc: 1.0000, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#84: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#85: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#86: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#87: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#88: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#89: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#90: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#91: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#92: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#93: episode_reward:0.1147 acc: 1.0000, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#94: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#95: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#96: episode_reward:0.1147 acc: 1.0000, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#97: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#98: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#99: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#100: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#101: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#102: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#103: episode_reward:0.0747 acc: 0.9600, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#104: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#105: episode_reward:0.1147 acc: 1.0000, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#106: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#107: episode_reward:0.1147 acc: 1.0000, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#108: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#109: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#110: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#111: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#112: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#113: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#114: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#115: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#116: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#117: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#118: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#119: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#120: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#121: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#122: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#123: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#124: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#125: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#126: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#127: episode_reward:0.0847 acc: 0.9700, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#128: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#129: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#130: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#131: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#132: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#133: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#134: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#135: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#136: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#137: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#138: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#139: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#140: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#141: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#142: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#143: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#144: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#145: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#146: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#147: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#148: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#149: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#150: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#151: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#152: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#153: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#154: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#155: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#156: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#157: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#158: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#159: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#160: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#161: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#162: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#163: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#164: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#165: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#166: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#167: episode_reward:0.1047 acc: 0.9900, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#168: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#169: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#170: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#171: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#172: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#173: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#174: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#175: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#176: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#177: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#178: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#179: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#180: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#181: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#182: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#183: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#184: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#185: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#186: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#187: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#188: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#189: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#190: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#191: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#192: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#193: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#194: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#195: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#196: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#197: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#198: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#199: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#200: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#201: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#202: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#203: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#204: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#205: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#206: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#207: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#208: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#209: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#210: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#211: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#212: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#213: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#214: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#215: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#216: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#217: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#218: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#219: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#220: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#221: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#222: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#223: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#224: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#225: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#226: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#227: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#228: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#229: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#230: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#231: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#232: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#233: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#234: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#235: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#236: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#237: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#238: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#239: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#240: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#241: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#242: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#243: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#244: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#245: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#246: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#247: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#248: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#249: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#250: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#251: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#252: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#253: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#254: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#255: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#256: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#257: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#258: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#259: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#260: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#261: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#262: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#263: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#264: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#265: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#266: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#267: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#268: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#269: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#270: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#271: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#272: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#273: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#274: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#275: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#276: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#277: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#278: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#279: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#280: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#281: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#282: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#283: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#284: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#285: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#286: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#287: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#288: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#289: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#290: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#291: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#292: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#293: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#294: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#295: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#296: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#297: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#298: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#299: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#300: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#301: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#302: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#303: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#304: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#305: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#306: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#307: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#308: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#309: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#310: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#311: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#312: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#313: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#314: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#315: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#316: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#317: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#318: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#319: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#320: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#321: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#322: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#323: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#324: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#325: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#326: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#327: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#328: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#329: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#330: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#331: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#332: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#333: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#334: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#335: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#336: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#337: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#338: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#339: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#340: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#341: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#342: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#343: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#344: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#345: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#346: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#347: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#348: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#349: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#350: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#351: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#352: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#353: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#354: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#355: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#356: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#357: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#358: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#359: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#360: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#361: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#362: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#363: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#364: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#365: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#366: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#367: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#368: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#369: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#370: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#371: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#372: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#373: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#374: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#375: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#376: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#377: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#378: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#379: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#380: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#381: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#382: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#383: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#384: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#385: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#386: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#387: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#388: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#389: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#390: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#391: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#392: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#393: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#394: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#395: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#396: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#397: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#398: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#399: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#400: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#401: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#402: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#403: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#404: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#405: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#406: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]
+#407: episode_reward:0.0947 acc: 0.9800, weight: 0.0000 MB
+best reward: 0.11466999999999994
+best policy: [[3, 3, 4, 6], [5, 4, 3, 6], [4, 4, 3, 5], [3, 4, 5, 6]]

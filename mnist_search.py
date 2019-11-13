@@ -7,12 +7,13 @@ from copy import deepcopy
 from lib.rl.ddpg import DDPG
 from tensorboardX import SummaryWriter
 
+from mnist.evaluate_quant import *
 
 # feature: (is_conv, in_channel, out_channel, filter_size, weight_size, in_feature, layer_idx, bits)
-lenet_info = [[1,   1,   6, 5,    6*1*5*5, 1*32*32, 1, 6], \
-              [1,   6,  16, 5,   16*6*5*5, 6*14*14, 2, 6], \
-              [1,  16, 120, 5, 120*16*5*5,  16*5*5, 3, 6], \
-              [0, 120,  10, 1, 10*120*1*1, 120*1*1, 4, 6]]
+lenet_info = [[1,   1,   6, 5,    6*1*5*5, 1*32*32, 1, 6, 6, 6, 6], \
+              [1,   6,  16, 5,   16*6*5*5, 6*14*14, 2, 6, 6, 6, 6], \
+              [1,  16, 120, 5, 120*16*5*5,  16*5*5, 3, 6, 6, 6, 6], \
+              [0, 120,  10, 1, 10*120*1*1, 120*1*1, 4, 6, 6, 6, 6]]
 
 def prGreen(prt): print("\033[92m {}\033[00m" .format(prt))
 
@@ -22,8 +23,8 @@ class QuantEnv:
         self.layer_feature = self.normalize_feature(model_info)
         self.wsize_list = [6*1*5*5, 16*6*5*5, 120*16*5*5, 10*120*1*1]
         self.cur_ind = 0
-        self.bound_list = [(4,6), (4,6), (4,6), (4,6)]
-        self.last_action = 6
+        self.bound_list = [(3,6), (3,6), (3,6), (3,6)]
+        self.last_action = [(6,6,6,6)]
         self.org_acc = 0.9837
         self.best_reward = -math.inf
         self.original_wsize = sum([ e*16 for e in self.wsize_list])
@@ -35,10 +36,14 @@ class QuantEnv:
         return obs
 
     # for quantization
-    def reward(self, acc, w_size_ratio=None):
+    def reward(self, acc, w_size_ratio=None, quant_scheme=None):
         if w_size_ratio is not None:
             return (acc - self.org_acc + 1. / w_size_ratio) * 0.1
-        return (acc - self.org_acc) * 0.1
+        if quant_scheme is not None:
+            r_acc = (acc - (self.org_acc * 0.9))
+            return 1-sum([sum(t) for t in quant_scheme])/96.0 + r_acc
+        return (acc - (self.org_acc * 0.9))
+        # return (acc - self.org_acc) * 0.1
 
     def step(self, action):
         action = self._action_wall(action)
@@ -49,12 +54,15 @@ class QuantEnv:
             # self._final_action_wall()
             assert len(self.quant_scheme) == len(self.layer_feature)
 
-            acc = 0 # TODO
+            # acc = 0 # TODO
+            acc = lenet_evaluate(self.quant_scheme)
+            print("quant_scheme = ", self.quant_scheme)
+            print("accuracy = ", acc)
 
             reward = self.reward(acc)
 
-            w_size = sum([ self.quant_scheme[i]*self.wsize_list[i] for i in range(len(self.quant_scheme)) ])
-            w_size_ratio = float(w_size) / float(self.original_wsize)
+            w_size = 0# sum([ self.quant_scheme[i]*self.wsize_list[i] for i in range(len(self.quant_scheme)) ])
+            w_size_ratio = 0# float(w_size) / float(self.original_wsize)
 
             info_set = {'w_ratio': w_size_ratio, 'accuracy': acc, 'w_size': w_size}
 
@@ -67,26 +75,30 @@ class QuantEnv:
             done = True
             return obs, reward, done, info_set
 
-        w_size = sum([ self.quant_scheme[i]*self.wsize_list[i] for i in range(len(self.quant_scheme)) ])
+        w_size = 0 #sum([ self.quant_scheme[i]*self.wsize_list[i] for i in range(len(self.quant_scheme)) ])
         info_set = {'w_size': w_size}
         reward = 0
         done = False
         self.cur_ind += 1  # the index of next layer
-        self.layer_feature[self.cur_ind][-1] = action
+        self.layer_feature[self.cur_ind][-4:] = action
         # build next state (in-place modify)
         obs = self.layer_feature[self.cur_ind, :].copy()
         return obs, reward, done, info_set
 
-    def _action_wall(self, action):
+    def _action_wall(self, actions):
         assert len(self.quant_scheme) == self.cur_ind
+
+        converted_actions = []
         # limit the action to certain range
-        action = float(action)
-        min_bit, max_bit = self.bound_list[self.cur_ind]
-        lbound, rbound = min_bit - 0.5, max_bit + 0.5  # same stride length for each bit
-        action = (rbound - lbound) * action + lbound
-        action = int(np.round(action, 0))
-        self.last_action = action
-        return action  # not constrained here
+        for action in actions:
+            action = float(action)
+            min_bit, max_bit = self.bound_list[self.cur_ind]
+            lbound, rbound = min_bit - 0.5, max_bit + 0.5  # same stride length for each bit
+            action = (rbound - lbound) * action + lbound
+            action = int(np.round(action, 0))
+            converted_actions += [action]
+        self.last_action = converted_actions
+        return converted_actions  # not constrained here
 
     def normalize_feature(self, model_info):
         # normalize the state
@@ -114,6 +126,7 @@ def train(num_episode, agent, env, output, debug=False):
     T = []  # trajectory
     while episode < num_episode:  # counting based on episode
         # reset if it is the start of episode
+        print("episode = ", episode)
         if observation is None:
             observation = deepcopy(env.reset())
             agent.reset(observation)
@@ -187,8 +200,8 @@ def train(num_episode, agent, env, output, debug=False):
             tfwriter.add_scalar('policy_loss', policy_loss, episode)
             tfwriter.add_scalar('delta', delta, episode)
             # record the preserve rate for each layer
-            for i, preserve_rate in enumerate(env.quant_scheme):
-                tfwriter.add_scalar('preserve_rate_w/{}'.format(i), preserve_rate, episode)
+            # for i, preserve_rate in enumerate(env.quant_scheme):
+            #     tfwriter.add_scalar('preserve_rate_w/{}'.format(i), preserve_rate, episode)
 
             text_writer.write('best reward: {}\n'.format(best_reward))
             text_writer.write('best policy: {}\n'.format(best_policy))
@@ -205,8 +218,8 @@ if __name__ == "__main__":
     parser.add_argument('--dataset', default='imagenet', type=str, help='dataset to use)')
     parser.add_argument('--dataset_root', default='data/imagenet', type=str, help='path to dataset)')
     parser.add_argument('--preserve_ratio', default=0.1, type=float, help='preserve ratio of the model size')
-    parser.add_argument('--min_bit', default=1, type=float, help='minimum bit to use')
-    parser.add_argument('--max_bit', default=8, type=float, help='maximum bit to use')
+    parser.add_argument('--min_bit', default=3, type=float, help='minimum bit to use')
+    parser.add_argument('--max_bit', default=6, type=float, help='maximum bit to use')
     parser.add_argument('--float_bit', default=32, type=int, help='the bit of full precision float')
     parser.add_argument('--is_pruned', dest='is_pruned', action='store_true')
     # ddpg
@@ -252,6 +265,7 @@ if __name__ == "__main__":
     parser.add_argument('--gpu_id', default='1', type=str,
                         help='id(s) for CUDA_VISIBLE_DEVICES')
 
+
     args = parser.parse_args()
 
     tfwriter = SummaryWriter(logdir=args.output)
@@ -260,7 +274,7 @@ if __name__ == "__main__":
     env = QuantEnv(lenet_info)
 
     nb_states = env.layer_feature.shape[1]
-    nb_actions = 1
+    nb_actions = 4
 
     agent = DDPG(nb_states, nb_actions, args)
 
