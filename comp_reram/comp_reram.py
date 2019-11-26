@@ -124,6 +124,9 @@ def test_mvm(mvm_model):
 
 class QuantEvaluator:
     def __init__(self, batch_size=1, workers=4, dnn_model=vgg16):
+        self.dnn_model = dnn_model
+        self.model_golden = self.dnn_model(pretrained=True).cuda()
+
         self.data_path = '/home/shuang91/data/imagenet/'
         traindir = os.path.join(self.data_path, 'train')
         print(traindir)
@@ -155,137 +158,49 @@ class QuantEvaluator:
         print("data = ", data)
         print("target = ", target)
 
-    def evaluate(self, quant_cfg):
+    def evaluate(self, quant_cfg=None, quiet=False):
+
+        t_start = time.time()
 
         model_mvm = None
-        if dnn_model is vgg16:
+        if self.dnn_model is vgg16 and quant_cfg is not None:
             assert(len(quant_cfg) == 16)
             conv_quant_cfg = quant_cfg[:13]
             line_quant_cfg = quant_cfg[-3:]
-            model_mvm = dnn_model(pretrained=True, 
+            model_mvm = self.dnn_model(pretrained=True, 
                                   quant_cfg=conv_quant_cfg, 
                                   linear_quant=line_quant_cfg)
         else:
-            model_mvm = dnn_model(pretrained=True, 
+            model_mvm = self.dnn_model(pretrained=True, 
                                   quant_cfg=quant_cfg)
 
         model_mvm.cuda()
 
         (data, target) = next(self.iter_test)
-        data_var = torch.autograd.Variable(data.cuda(), volatile=True)
-        target_var = torch.autograd.Variable(target.cuda(), volatile=True)
+        data_var = torch.autograd.Variable(data.cuda())
+        target_var = torch.autograd.Variable(target.cuda())
 
-        output = mvm_model(data_var)
-        loss= criterion(output, target_var)
+        output_golden = self.model_golden(data_var)
+        loss_golden   = self.criterion(output_golden, target_var)
 
-        return loss.data
+        if not quiet:
+            print("Original model loss = ", loss_golden.data.item())
+
+        time.sleep(1)
+
+        output = model_mvm(data_var)
+        loss   = self.criterion(output, target_var)
+
+        if not quiet:
+            print("Quantized model loss = ", loss.data.item())
+            print("Evaluation time = ", time.time() - t_start)
+
+        return loss.data.item(), loss_golden.data.item()
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(description='PyTorch Reinforcement Learning')
-    parser.add_argument('--arch', '-a', metavar='ARCH', default='resnet18', choices=model_names,
-                        help='model architecture:' + ' | '.join(model_names) + ' (default: resnet18)')
+    QE = QuantEvaluator()
+    loss = QE.evaluate(quant_cfg=[(8,8,32,24,32,24,9,16,24)]*16)
+    # loss = QE.evaluate()
+    print(loss)
 
-    parser.add_argument('-b', '--batch-size', default=64, type=int,
-                         metavar='N', help='mini-batch size (default: 64)')
-
-    parser.add_argument('--data', action='store', default='/home/shuang91/data/imagenet/',
-            help='dataset path')
-
-    parser.add_argument('-j', '--workers', default=4, type=int, metavar='N',
-                help='number of data loading workers (default: 8)')
-
-    args = parser.parse_args()
-
-    # model = models.__dict__[args.arch](pretrained=True)
-
-    # if args.arch.startswith('alexnet') or args.arch.startswith('vgg'):
-    #     model.features = torch.nn.DataParallel(model.features)
-    #     model.cuda()
-    # else:
-    #     model = torch.nn.DataParallel(model).cuda()
-
-    # pretrained_model = model.state_dict()
-    # print('    Total params: %.2fM' % (sum(p.numel() for p in model.parameters())/1000000.0))
-
-    cudnn.benchmark = True
-
-    # model.load_state_dict(pretrained_model, strict=True)
-
-    # num_conv2d = 0
-    # num_bn     = 0
-    # num_linear = 0
-    # for m in model.modules():
-    #     if isinstance(m, nn.Conv2d):
-    #         num_conv2d += 1
-    #     elif isinstance(m, nn.BatchNorm2d) or isinstance(m, nn.BatchNorm1d):
-    #         num_bn += 1
-    #     elif isinstance(m, nn.Linear):
-    #         num_linear += 1
-    # print("num_conv2d = ", num_conv2d)
-    # print("num_bn = ", num_bn)
-    # print("num_linear = ", num_linear)
-
-    # model_resnet18_mvm = resnet18_mvm(pretrained=True)
-    # model_vgg16_mvm = vgg16(pretrained=True)
-    model_vgg16_mvm = vgg16(pretrained=True, quant_cfg=[(8,8,32,24,32,24,9,16,24)]*13, linear_quant=[(8,8,32,24,32,24,9,16,24)]*3)
-    # model_vgg16 = vgg16(pretrained=True)
-
-    # num_conv2d = 0
-    # num_bn     = 0
-    # num_linear = 0
-    # for m in model_resnet18_mvm.modules():
-    #     if isinstance(m, Conv2d_mvm):
-    #         num_conv2d += 1
-    #     elif isinstance(m, nn.BatchNorm2d) or isinstance(m, nn.BatchNorm1d):
-    #         num_bn += 1
-    #     elif isinstance(m, Linear_mvm):
-    #         num_linear += 1
-    # print("num_conv2d = ", num_conv2d)
-    # print("num_bn = ", num_bn)
-    # print("num_linear = ", num_linear)
-
-    # model.cuda()
-    # model_resnet18_mvm.cuda()
-    model_vgg16_mvm.cuda()
-
-    traindir = os.path.join(args.data, 'train')
-    print(traindir)
-    valdir = os.path.join(args.data, 'val')
-    print(valdir)
-    normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                                     std=[0.229, 0.224, 0.225])
-
-    train_dataset = datasets.ImageFolder(
-        traindir,
-        transforms.Compose([
-            transforms.RandomResizedCrop(224),
-            transforms.RandomHorizontalFlip(),
-            transforms.ToTensor(),
-            normalize,
-        ]))
-    torch_seed = 40#torch.initial_seed()
-    trainloader = torch.utils.data.DataLoader(
-        train_dataset, batch_size=args.batch_size, shuffle=True,
-        num_workers=args.workers, pin_memory=True, sampler=None, drop_last=True)
-
-    test_dataset = datasets.ImageFolder(valdir, transforms.Compose([
-            transforms.Resize(256),
-            transforms.CenterCrop(224),
-            transforms.ToTensor(),
-            normalize,
-        ]))
-
-    # test_dataset_sub = torch.utils.data.Subset(test_dataset, list(range(args.batch_size)))
-
-    # print("test_dataset len = ",  test_dataset)
-    # print("test_dataset_sub len = ",  len(test_dataset_sub))
-    testloader = torch.utils.data.DataLoader(
-        test_dataset,
-        batch_size=args.batch_size, shuffle=False,
-        num_workers=args.workers, pin_memory=True,drop_last=True)
-
-    print('Data Loading done')
-    criterion = nn.CrossEntropyLoss()
-
-    test_mvm(model_vgg16_mvm)
