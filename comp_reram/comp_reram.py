@@ -246,8 +246,8 @@ if __name__ == "__main__":
            [1, 1, 14, 8, 10, 6, 9, 14, 8], \
            [1, 1, 10, 6, 12, 6, 5, 10, 6], \
            [1, 1, 14, 8, 12, 6, 8, 10, 4]]
-    loss = QE.evaluate(quant_cfg=cfg)
-    # loss = QE.evaluate(quant_cfg=[(2,1,8,4,8,4,9,8,4)]*13)
+    # loss = QE.evaluate(quant_cfg=cfg)
+    loss = QE.evaluate(quant_cfg=[(2,1,4,4,4,4,9,4,4)]*13)
     # loss = QE.evaluate()
     print(loss)
 

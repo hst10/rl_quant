@@ -48,8 +48,8 @@ class QuantEnv:
         self.layer_feature = self.normalize_feature(model_info)
         self.wsize_list = [6*1*5*5, 16*6*5*5, 120*16*5*5, 10*120*1*1]
         self.cur_ind = 0
-        self.bound_list = [(4,6), (4,8), (4,6), (4,8), (4,9), (4,6), (4,8)]
-        self.last_action = [(4,8,4,8,9,4,8)]
+        self.bound_list = [(1,5), (1,5), (1,5), (1,5), (4,9), (1,5), (1,5)]
+        self.last_action = [(16,8,16,8,9,16,8)]
         self.org_acc = 0.9837
         self.best_reward = -math.inf
         self.original_wsize = sum([ e*16 for e in self.wsize_list])
@@ -93,14 +93,13 @@ class QuantEnv:
 
             q_scheme = [ [1, 1]+(qs) for qs in self.quant_scheme ]
 
-            for e in q_scheme:
-                for i in [2, 3, 4, 5, 7, 8]:
-                    e[i] = 2 * ((e[i]+1)//2)
+            # for e in q_scheme:
+            #     for i in [2, 3, 4, 5, 7, 8]:
+            #         e[i] = 2 * ((e[i]+1)//2)
 
-            for e in q_scheme:
-                for i in [2, 4, 7]:
-                    e[i] = e[i] + e[i+1]
-
+            # for e in q_scheme:
+            #     for i in [2, 4, 7]:
+            #         e[i] = e[i] + e[i+1]
 
             # acc = 0 # TODO
             loss, loss_ref = self.QE.evaluate(q_scheme)
@@ -138,6 +137,8 @@ class QuantEnv:
     def _action_wall(self, actions):
         assert len(self.quant_scheme) == self.cur_ind
 
+        # print("_action_wall BEFORE: ", actions)
+
         converted_actions = []
         # limit the action to certain range
         for idx, action in enumerate(actions):
@@ -147,7 +148,18 @@ class QuantEnv:
             action = (rbound - lbound) * action + lbound
             action = int(np.round(action, 0))
             converted_actions += [action]
+
+        for idx in [0, 2, 5]:
+            converted_actions[idx] = 2 ** converted_actions[idx]
+            min_bit_pow, max_bit_pow = self.bound_list[idx]
+            min_bit, max_bit = 2**min_bit_pow - 1, converted_actions[idx] - 1
+            lbound, rbound = min_bit - 0.5, max_bit + 0.5
+            converted_actions[idx+1] = (rbound - lbound) * actions[idx+1] + lbound
+            converted_actions[idx+1] = int(np.round(converted_actions[idx+1], 0))
+
         self.last_action = converted_actions
+
+        # print("_action_wall AFTER: ", converted_actions)
         return converted_actions  # not constrained here
 
     def normalize_feature(self, model_info):
