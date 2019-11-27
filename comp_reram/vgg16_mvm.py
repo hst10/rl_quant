@@ -247,6 +247,6 @@ if __name__ == "__main__":
     # m = vgg16(pretrained=True)
     # print(m)
 
-    mvm = vgg16(pretrained=True, quant_cfg=[(8,8,32,24,32,24,9,16,24)]*13, linear_quant=[(8,8,32,24,32,24,9,16,24)]*3)
+    mvm = vgg16(pretrained=True, quant_cfg=[(8,8,32,24,32,24,9,16,24)]*13)
     print(mvm)
 

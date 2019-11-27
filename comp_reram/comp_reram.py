@@ -123,9 +123,11 @@ def test_mvm(mvm_model):
     return acc, losses.avg
 
 class QuantEvaluator:
-    def __init__(self, batch_size=1, workers=4, dnn_model=vgg16):
+    def __init__(self, batch_size=16, workers=4, dnn_model=vgg16):
         self.dnn_model = dnn_model
         self.model_golden = self.dnn_model(pretrained=True).cuda()
+
+        self.global_index = 0
 
         self.data_path = '/home/shuang91/data/imagenet/'
         traindir = os.path.join(self.data_path, 'train')
@@ -137,10 +139,12 @@ class QuantEvaluator:
 
         cudnn.benchmark = True
 
+        print("BATCH SIZE === ", batch_size)
+
         self.criterion = nn.CrossEntropyLoss()
 
         self.test_dataset = datasets.ImageFolder(valdir, transforms.Compose([
-            transforms.Resize(256),
+            transforms.Resize(224),
             transforms.CenterCrop(224),
             transforms.ToTensor(),
             normalize,
@@ -160,19 +164,32 @@ class QuantEvaluator:
 
     def evaluate(self, quant_cfg=None, quiet=False):
 
+        self.global_index += 1
+
+        log_file = open("./logs/"+str(self.global_index)+".txt", "w")
+
         t_start = time.time()
+
+        print(quant_cfg)
+        log_file.write(str(quant_cfg)+'\n')
+
+
+        print("AAAAAAAAAAAAAAAAAAAAAA")
 
         model_mvm = None
         if self.dnn_model is vgg16 and quant_cfg is not None:
-            assert(len(quant_cfg) == 16)
+            assert(len(quant_cfg) == 13)
             conv_quant_cfg = quant_cfg[:13]
-            line_quant_cfg = quant_cfg[-3:]
+            # line_quant_cfg = quant_cfg[-3:]
+            line_quant_cfg = None
             model_mvm = self.dnn_model(pretrained=True, 
                                   quant_cfg=conv_quant_cfg, 
                                   linear_quant=line_quant_cfg)
         else:
             model_mvm = self.dnn_model(pretrained=True, 
                                   quant_cfg=quant_cfg)
+
+        print("BBBBBBBBBBBBBBBBBBBBBBBBBBB")
 
         model_mvm.cuda()
 
@@ -183,24 +200,54 @@ class QuantEvaluator:
         output_golden = self.model_golden(data_var)
         loss_golden   = self.criterion(output_golden, target_var)
 
+        # print("output_golden = ", output_golden)
+        # print("target_var = ", target_var.item())
+
+        print("CCCCCCCCCCCCCCCCCCCCCCCCCCC")
+
         if not quiet:
             print("Original model loss = ", loss_golden.data.item())
-
-        time.sleep(1)
+            log_file.write(str(loss_golden.data.item())+'\n')
 
         output = model_mvm(data_var)
         loss   = self.criterion(output, target_var)
+        # print("output = ", output)
 
         if not quiet:
             print("Quantized model loss = ", loss.data.item())
             print("Evaluation time = ", time.time() - t_start)
+            log_file.write(str(loss.data.item())+'\n')
+            log_file.write(str(time.time() - t_start)+'\n')
+
+        log_file.close()
 
         return loss.data.item(), loss_golden.data.item()
 
 if __name__ == "__main__":
 
-    QE = QuantEvaluator()
-    loss = QE.evaluate(quant_cfg=[(8,8,32,24,32,24,9,16,24)]*16)
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument('-b', '--batch-size', default=16, type=int,
+                         metavar='N', help='mini-batch size (default: 16)')
+
+    args = parser.parse_args()
+
+    QE = QuantEvaluator(batch_size=args.batch_size)
+    cfg = [[1, 1, 14, 8, 10, 4, 9, 12, 8], \
+           [1, 1, 12, 6, 8, 4, 9, 14, 8], \
+           [1, 1, 10, 4, 14, 8, 6, 12, 6], \
+           [1, 1, 14, 8, 10, 6, 6, 10, 6], \
+           [1, 1, 14, 8, 14, 8, 7, 10, 6], \
+           [1, 1, 10, 6, 14, 8, 5, 12, 6], \
+           [1, 1, 14, 8, 12, 6, 5, 12, 6], \
+           [1, 1, 12, 8, 14, 8, 6, 12, 8], \
+           [1, 1, 14, 8, 8, 4, 8, 10, 4], \
+           [1, 1, 12, 6, 12, 6, 5, 10, 4], \
+           [1, 1, 14, 8, 10, 6, 9, 14, 8], \
+           [1, 1, 10, 6, 12, 6, 5, 10, 6], \
+           [1, 1, 14, 8, 12, 6, 8, 10, 4]]
+    loss = QE.evaluate(quant_cfg=cfg)
+    # loss = QE.evaluate(quant_cfg=[(2,1,8,4,8,4,9,8,4)]*13)
     # loss = QE.evaluate()
     print(loss)
 
