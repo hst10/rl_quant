@@ -48,7 +48,7 @@ class QuantEnv:
         self.layer_feature = self.normalize_feature(model_info)
         self.wsize_list = [6*1*5*5, 16*6*5*5, 120*16*5*5, 10*120*1*1]
         self.cur_ind = 0
-        self.bound_list = [(1,5), (1,5), (1,5), (1,5), (4,9), (1,5), (1,5)]
+        self.bound_list = [(2,5), (2,5), (2,5), (2,5), (4,9), (2,5), (2,5)]
         self.last_action = [(16,8,16,8,9,16,8)]
         self.org_acc = 0.9837
         self.best_reward = -math.inf

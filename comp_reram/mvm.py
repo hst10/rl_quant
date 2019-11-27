@@ -114,12 +114,6 @@ def bit_slicing(weight, frac_bit, bit_slice, weight_bits, device):  # version 2
     weight_idx = get_index_rearrange(idxs[int(math.log2(weight_bits//bit_slice))-1], out_channel)
     bitslice = weight.clone()
 
-    print("idx[xxx] = ", idxs[int(math.log2(weight_bits//bit_slice))-1])
-    print("weight_bits = ", weight_bits)
-    print("out_channel = ", out_channel)
-    print("weight_idx = ", weight_idx)
-    print("weight_idx = ", weight_idx.shape)
-    print("weight.shape = ", weight.shape)
     bitslice[weight_idx[0],:] = weight
     bitslice = bitslice.t()
 
@@ -159,9 +153,6 @@ def float_to_16bits_tensor(input, frac_bit, bit_stream, input_bits, device): # i
     input_idx = get_index_rearrange(idxs[int(math.log2(input_bits//bit_stream)-1)], batch_size)
     bit_slice = input.clone()
     bit_slice[input_idx[0]] = input
-    print("bit_slice = ", bit_slice.shape)
-    print("batch_size = ", batch_size)
-    print("input_bits = ", input_bits)
     bit_slice = bit_slice.reshape(batch_size, input_bits//bit_stream, -1).transpose(1,2)
 
 #    del max_input, min_input
