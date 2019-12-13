@@ -35,7 +35,7 @@ def costFn(acc, quant):
     weight_ratio = sum([act_size[i]*lenet_size[i][0] + wgt_size[i]*lenet_size[i][1] for i in range(4)])/float(FULL_PREC * sum(lenet_size))
     flops_ratio = sum([(max(act_size[i],wgt_size[i])/FULL_PREC) *lenet_flops[i] for i in range(4)])/float(sum(lenet_flops))
 
-    reward = acc_diff + 1.0/weight_ratio + 1.0/flops_ratio
+    reward = np.exp(-acc_diff) + (1.0 -weight_ratio) + (1.0 - flops_ratio)
 
     return reward
 
