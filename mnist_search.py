@@ -1,19 +1,44 @@
-import os
+import os, sys
 import torch
 import argparse
 import numpy as np
 import math
 from copy import deepcopy
-from lib.rl.ddpg import DDPG
 from tensorboardX import SummaryWriter
 
-from mnist.evaluate_quant import *
+sys.path.insert(0, './mnist/')
+sys.path.insert(0, './lib/rl/')
+from evaluate_quant import *
+from ddpg import DDPG
 
 # feature: (is_conv, in_channel, out_channel, filter_size, weight_size, in_feature, layer_idx, bits)
 lenet_info = [[1,   1,   6, 5,    6*1*5*5, 1*32*32, 1, 6, 6, 6, 6], \
               [1,   6,  16, 5,   16*6*5*5, 6*14*14, 2, 6, 6, 6, 6], \
               [1,  16, 120, 5, 120*16*5*5,  16*5*5, 3, 6, 6, 6, 6], \
               [0, 120,  10, 1, 10*120*1*1, 120*1*1, 4, 6, 6, 6, 6]]
+
+lenet_flops = [32*32*1*5*5*6, 14*14*6*5*5*16, 5*5*16*5*5*120, 10*120]
+lenet_size = [(data[5]*12,data[4]*12) for data in lenet_info]
+
+def costFn(acc, quant):
+    """
+        Get the cost.
+    """
+    FULL_PREC = 12.0
+    FULL_ACC = 0.9837
+
+    acc_diff = FULL_ACC - acc
+
+    act_sizes = [sum(q[:2]) for q in quant]
+    wgt_sizes = [sum(q[2:]) for q in quant]
+
+    weight_ratio = sum([act_size[i]*lenet_size[i][0] + wgt_size[i]*lenet_size[i][1] for i in range(4)])/float(FULL_PREC * sum(lenet_size))
+    flops_ratio = sum([(max(act_size[i],wgt_size[i])/FULL_PREC) *lenet_flops[i] for i in range(4)])/float(sum(lenet_flops))
+
+    reward = acc_diff + 1.0/weight_ratio + 1.0/flops_ratio
+
+    return reward
+
 
 def prGreen(prt): print("\033[92m {}\033[00m" .format(prt))
 
@@ -26,7 +51,7 @@ class QuantEnv:
         self.bound_list = [(3,6), (3,6), (3,6), (3,6)]
         self.last_action = [(6,6,6,6)]
         self.org_acc = 0.9837
-        self.best_reward = -math.inf
+        self.best_reward = -np.inf
         self.original_wsize = sum([ e*16 for e in self.wsize_list])
 
     def reset(self):
@@ -116,7 +141,7 @@ class QuantEnv:
 
 def train(num_episode, agent, env, output, debug=False):
     # best record
-    best_reward = -math.inf
+    best_reward = -np.inf
     best_policy = []
 
     agent.is_training = True
