@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-import os
+import os, sys
 import subprocess
+CWD = os.getcwd()
 
 lst_params = ['CONV1_ACT', 'CONV1_WGT', 'CONV3_ACT', 'CONV3_WGT', 
               'CONV5_ACT', 'CONV5_WGT', 'FC6_ACT', 'FC6_WGT']
@@ -16,7 +17,7 @@ def lenet_evaluate(quant_scheme):
                    " -D"+lst_params[i]+"_INT=" +str(quant[i][1]) for i in range(len(lst_params))]
 
     config_str = " ".join(lst_config)
-    compile_cmd = "cd ./mnist/; g++ -std=c++11 -I/home/shuang91/vivado_2019.1_include " + config_str + \
+    compile_cmd = "cd ./mnist/; g++ -std=c++11 -I" + CWD + "/../vivado_2019.1_include " + config_str + \
                   " ./lenet_quant.cpp -o lenet"
     execute_cmd = "cd ./mnist; ./lenet"
 
@@ -27,6 +28,16 @@ def lenet_evaluate(quant_scheme):
     os.system('cd ./mnist/; rm -r ./lenet; cd -')
     return float(stdout.strip())
 
+def getReward(acc, quant_scheme):
+    """
+        Gets a reward value.
+    """
+    sys.path.insert(0, '../')
+    from mnist_search import costFn
+
+    return costFn(acc, quant_scheme)
 
 if __name__ == "__main__":
-    print(lenet_evaluate([(4,4,4,4), (4,4,4,4), (4,4,4,4), (4,4,4,4)]))
+    quant_scheme = [(4,4,4,4), (4,4,4,4), (4,4,4,4), (4,4,4,4)]
+    acc = lenet_evaluate(quant_scheme)
+    print(getReward(acc, quant_scheme))

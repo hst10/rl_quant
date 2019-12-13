@@ -17,24 +17,33 @@ lenet_info = [[1,   1,   6, 5,    6*1*5*5, 1*32*32, 1, 6, 6, 6, 6], \
               [1,  16, 120, 5, 120*16*5*5,  16*5*5, 3, 6, 6, 6, 6], \
               [0, 120,  10, 1, 10*120*1*1, 120*1*1, 4, 6, 6, 6, 6]]
 
+# Layerwise flops
 lenet_flops = [32*32*1*5*5*6, 14*14*6*5*5*16, 5*5*16*5*5*120, 10*120]
-lenet_size = [(data[5]*12,data[4]*12) for data in lenet_info]
+# Layer wise sizes, represented as a tuple
+lenet_sizes = [(data[5]*12,data[4]*12) for data in lenet_info]
+# Total number of parameters
+lenet_size = sum([sum(layer) for layer in lenet_sizes])
 
 def costFn(acc, quant):
     """
-        Get the cost.
+        Get the total reward.
     """
     FULL_PREC = 12.0
     FULL_ACC = 0.9837
 
+    # Accuracy difference
     acc_diff = FULL_ACC - acc
 
+    # Layerwise precision
     act_sizes = [sum(q[:2]) for q in quant]
     wgt_sizes = [sum(q[2:]) for q in quant]
 
-    weight_ratio = sum([act_size[i]*lenet_size[i][0] + wgt_size[i]*lenet_size[i][1] for i in range(4)])/float(FULL_PREC * sum(lenet_size))
-    flops_ratio = sum([(max(act_size[i],wgt_size[i])/FULL_PREC) *lenet_flops[i] for i in range(4)])/float(sum(lenet_flops))
+    # ratio of model size with given precision/full precision
+    weight_ratio = sum([act_sizes[i]*lenet_sizes[i][0] + wgt_sizes[i]*lenet_sizes[i][1] for i in range(4)])/float(FULL_PREC * lenet_size)
+    # Ratio of number of flops divided by actual flops. Assuming linear scaling of multipliers.
+    flops_ratio = sum([(max(act_sizes[i],wgt_sizes[i])/FULL_PREC) *lenet_flops[i] for i in range(4)])/float(sum(lenet_flops))
 
+    # Total reward.
     reward = np.exp(-acc_diff) + (1.0 -weight_ratio) + (1.0 - flops_ratio)
 
     return reward
