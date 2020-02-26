@@ -58,6 +58,8 @@ class QuantEnv:
 
         self.QE = QuantEvaluator(batch_size=batch_size)
 
+        self.global_index = 0
+
     def reset(self):
         self.cur_ind = 0
         self.quant_scheme = []
@@ -71,7 +73,7 @@ class QuantEnv:
         qs_p = np.array(tmp, 'float')
         assert(qs_p.shape == self.bw_weights.shape)
         cost = qs_p * self.bw_weights * (1.25 ** adc_tmp)
-        return cost
+        return sum(sum(cost))
 
     def norm_bw(self, info):
         model_info = np.array(info, 'float')[:, 3:6]
@@ -80,7 +82,7 @@ class QuantEnv:
 
 
     def reward(self, loss_diff, quant_scheme):
-        return -(4**loss_diff + cost_esitmate(quant_scheme))
+        return -(4**loss_diff + self.cost_esitmate(quant_scheme))
 
     def step(self, action):
         action = self._action_wall(action)
@@ -88,10 +90,15 @@ class QuantEnv:
 
         # all the actions are made
         if self.cur_ind == 12:
+
+            self.global_index += 1
+
+            log_file = open("./logs_4_bk/"+str(self.global_index)+".txt", "a+")
+
             # self._final_action_wall()
             assert len(self.quant_scheme) == len(self.layer_feature)
 
-            q_scheme = [ [1, 1]+(qs) for qs in self.quant_scheme ]
+            q_scheme = [ [2, 1]+(qs) for qs in self.quant_scheme ]
 
             # for e in q_scheme:
             #     for i in [2, 3, 4, 5, 7, 8]:
@@ -108,7 +115,15 @@ class QuantEnv:
             print("loss = ", loss)
             print("loss_diff = ", loss_diff)
 
+
             reward = self.reward(loss_diff, self.quant_scheme)
+            print("reward = ", reward)
+
+            log_file.write(str(self.quant_scheme) + "\n")
+            log_file.write(str(loss) + "\n")
+            log_file.write(str(loss_ref) + "\n")
+            log_file.write(str(loss_diff) + "\n")
+            log_file.write(str(reward) + "\n")
 
             w_size = 0# sum([ self.quant_scheme[i]*self.wsize_list[i] for i in range(len(self.quant_scheme)) ])
             w_size_ratio = 0# float(w_size) / float(self.original_wsize)
@@ -122,6 +137,9 @@ class QuantEnv:
 
             obs = self.layer_feature[self.cur_ind, :].copy()  # actually the same as the last state
             done = True
+
+
+            log_file.close()
             return obs, reward, done, info_set
 
         w_size = 0 #sum([ self.quant_scheme[i]*self.wsize_list[i] for i in range(len(self.quant_scheme)) ])
@@ -219,11 +237,11 @@ def train(num_episode, agent, env, output, debug=False):
         if done:  # end of episode
             if debug:
                 print('#{}: episode_reward:{:.4f} acc: {:.4f}, weight: {:.4f} MB'.format(episode, episode_reward,
-                                                                                         info['accuracy'],
+                                                                                         info['loss'],
                                                                                          info['w_ratio'] * 1. / 8e6))
             text_writer.write(
                 '#{}: episode_reward:{:.4f} acc: {:.4f}, weight: {:.4f} MB\n'.format(episode, episode_reward,
-                                                                                     info['accuracy'],
+                                                                                     info['loss'],
                                                                                      info['w_ratio'] * 1. / 8e6))
             final_reward = T[-1][0]
             # agent observe and update policy
@@ -255,7 +273,8 @@ def train(num_episode, agent, env, output, debug=False):
             delta = agent.get_delta()
             tfwriter.add_scalar('reward/last', final_reward, episode)
             tfwriter.add_scalar('reward/best', best_reward, episode)
-            tfwriter.add_scalar('info/accuracy', info['accuracy'], episode)
+            tfwriter.add_scalar('info/loss', info['loss'], episode)
+            tfwriter.add_scalar('info/loss_diff', info['loss_diff'], episode)
             tfwriter.add_scalar('info/w_ratio', info['w_ratio'], episode)
             tfwriter.add_text('info/best_policy', str(best_policy), episode)
             tfwriter.add_text('info/current_policy', str(env.quant_scheme), episode)
