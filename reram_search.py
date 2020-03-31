@@ -36,7 +36,8 @@ vgg16_info = \
  # [0,   4096,  4096, 1,     4096*4096,        4096, 15 ], \
  # [0,   4096,  1000, 1,     4096*1000,        4096, 16 ]]
 
-tunable_params = [4,8,4,8,9,4,8]
+# tunable_params = [4,8,4,8,9,4,8]
+tunable_params = [16,8,16,8,9]
 
 vgg16_info = [ lst+tunable_params for lst in vgg16_info ]
 
@@ -48,8 +49,11 @@ class QuantEnv:
         self.layer_feature = self.normalize_feature(model_info)
         self.wsize_list = [6*1*5*5, 16*6*5*5, 120*16*5*5, 10*120*1*1]
         self.cur_ind = 0
-        self.bound_list = [(2,5), (2,5), (2,5), (2,5), (4,9), (2,5), (2,5)]
-        self.last_action = [(16,8,16,8,9,16,8)]
+        # self.bound_list = [(2,5), (2,5), (2,5), (2,5), (4,9), (2,5), (2,5)]
+        self.bound_list = [(2,5), (2,5), (2,5), (2,5), (4,9)]
+        self.total_bitwidth_list = [8, 16, 32]
+        self.adc_bitwidth_list = [4,5,6,7,8,9]
+        self.last_action = [(16,8,16,8,9)]
         self.org_acc = 0.9837
         self.best_reward = -math.inf
         self.original_wsize = sum([ e*16 for e in self.wsize_list])
@@ -66,8 +70,8 @@ class QuantEnv:
         obs = self.layer_feature[0].copy()
         return obs
 
-    def cost_esitmate(self, quant_scheme=None):
-        tmp = [ [(qs[0]+qs[1])/13, (qs[2]+qs[3])/13, (qs[5]+qs[6])/13] for qs in quant_scheme ]
+    def cost_estimate(self, quant_scheme=None):
+        tmp = [ [(qs[0]+qs[1])/13, (qs[2]+qs[3])/13] for qs in quant_scheme ]
         adc_tmp = float(sum([ qs[4] for qs in quant_scheme ])) / 13
 
         qs_p = np.array(tmp, 'float')
@@ -76,13 +80,13 @@ class QuantEnv:
         return sum(sum(cost))
 
     def norm_bw(self, info):
-        model_info = np.array(info, 'float')[:, 3:6]
+        model_info = np.array(info, 'float')[:, 3:5]
         sum_quant = sum(sum(model_info))
         return model_info / sum_quant
 
 
     def reward(self, loss_diff, quant_scheme):
-        return -(4**loss_diff + self.cost_esitmate(quant_scheme))
+        return -(loss_diff/10 + self.cost_estimate(quant_scheme))
 
     def step(self, action):
         action = self._action_wall(action)
@@ -93,12 +97,12 @@ class QuantEnv:
 
             self.global_index += 1
 
-            log_file = open("./logs_4_bk/"+str(self.global_index)+".txt", "a+")
+            log_file = open("./logs/"+str(self.global_index)+".txt", "a+")
 
             # self._final_action_wall()
             assert len(self.quant_scheme) == len(self.layer_feature)
 
-            q_scheme = [ [2, 1]+(qs) for qs in self.quant_scheme ]
+            q_scheme = [ [2, 1]+(qs)+[16, 12] for qs in self.quant_scheme ]
 
             # for e in q_scheme:
             #     for i in [2, 3, 4, 5, 7, 8]:
@@ -147,7 +151,7 @@ class QuantEnv:
         reward = 0
         done = False
         self.cur_ind += 1  # the index of next layer
-        self.layer_feature[self.cur_ind][-7:] = action
+        self.layer_feature[self.cur_ind][-5:] = action
         # build next state (in-place modify)
         obs = self.layer_feature[self.cur_ind, :].copy()
         return obs, reward, done, info_set
@@ -161,19 +165,18 @@ class QuantEnv:
         # limit the action to certain range
         for idx, action in enumerate(actions):
             action = float(action)
-            min_bit, max_bit = self.bound_list[idx]
-            lbound, rbound = min_bit - 0.5, max_bit + 0.5  # same stride length for each bit
-            action = (rbound - lbound) * action + lbound
-            action = int(np.round(action, 0))
-            converted_actions += [action]
-
-        for idx in [0, 2, 5]:
-            converted_actions[idx] = 2 ** converted_actions[idx]
-            min_bit_pow, max_bit_pow = self.bound_list[idx]
-            min_bit, max_bit = 2**min_bit_pow - 1, converted_actions[idx] - 1
-            lbound, rbound = min_bit - 0.5, max_bit + 0.5
-            converted_actions[idx+1] = (rbound - lbound) * actions[idx+1] + lbound
-            converted_actions[idx+1] = int(np.round(converted_actions[idx+1], 0))
+            if idx in [0, 2]: 
+                index = math.floor(action * len(self.total_bitwidth_list))
+                if index >= len(self.total_bitwidth_list):
+                    index = len(self.total_bitwidth_list) - 1
+                converted_actions += [self.total_bitwidth_list[index]]
+            elif idx in [1, 3]: 
+                converted_actions += [ math.floor(action * converted_actions[idx - 1]) ]
+            elif idx == 4:
+                index = math.floor(action * len(self.adc_bitwidth_list))
+                if index >= len(self.adc_bitwidth_list):
+                    index = len(self.adc_bitwidth_list) - 1
+                converted_actions += [self.adc_bitwidth_list[index]]
 
         self.last_action = converted_actions
 
@@ -297,7 +300,7 @@ if __name__ == "__main__":
 
     parser.add_argument('--suffix', default=None, type=str, help='suffix to help you remember what experiment you ran')
 
-    parser.add_argument('-b', '--batch-size', default=16, type=int, metavar='N', help='mini-batch size (default: 16)')
+    parser.add_argument('-b', '--batch-size', default=1, type=int, metavar='N', help='mini-batch size (default: 1)')
     # env
     parser.add_argument('--dataset', default='imagenet', type=str, help='dataset to use)')
     parser.add_argument('--dataset_root', default='data/imagenet', type=str, help='path to dataset)')
@@ -346,7 +349,7 @@ if __name__ == "__main__":
     # parser.add_argument('--arch', '-a', metavar='ARCH', default='mobilenet_v2', choices=model_names,
     #                 help='model architecture:' + ' | '.join(model_names) + ' (default: mobilenet_v2)')
     # device options
-    parser.add_argument('--gpu_id', default='1', type=str,
+    parser.add_argument('--gpu_id', default='3', type=str,
                         help='id(s) for CUDA_VISIBLE_DEVICES')
 
 
@@ -360,6 +363,10 @@ if __name__ == "__main__":
     nb_states = env.layer_feature.shape[1]
     nb_actions = len(tunable_params)
 
+    print("Creating  DDPG agent ...")
+
     agent = DDPG(nb_states, nb_actions, args)
+
+    print("Start training ...")
 
     best_policy, best_reward = train(args.train_episode, agent, env, args.output, debug=args.debug)

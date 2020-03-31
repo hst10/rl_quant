@@ -150,12 +150,18 @@ class QuantEvaluator:
             normalize,
         ]))
 
+        print("test_dataset init done! ")
+
         self.testloader = torch.utils.data.DataLoader(
             self.test_dataset,
             batch_size=batch_size, shuffle=False,
             num_workers=workers, pin_memory=True,drop_last=True)
 
+        print("testloader init done! ")
+
         self.iter_test = iter(self.testloader)
+
+        print("QuantEvaluator init done! ")
 
     def explore(self):
         (data, target) = next(self.iter_test)
@@ -251,3 +257,18 @@ if __name__ == "__main__":
     # loss = QE.evaluate()
     print(loss)
 
+'''
+parameters      Meaning                                         possible values         default value
+bit_slice       # of bit-slicing for weight                     (1, 2, 4, 8)            2
+bit_stream      # of bit-stream for input                       (1, 2, 4, 8)            1
+weight_bits     # of bits for fixed point of weight             (8, 16, 32)             16
+weight_bit_frac # of bits for fraction part of weight                                   16 -> 12 / 32 -> 24
+input_bits      # of bits for fixed point of input              (8, 16, 32)             16
+input_bit_frac  # of bits for fraction part of input                                    16 -> 12 / 32 -> 24
+adc_bit         # of adc bits                                   (1, 2, ... )            9
+acm_bits        # of bit of output                              (8, 16, 32)             16
+acm_bit_frac    # of bits for fraction partof output                                    16 -> 12 / 32 -> 24
+
+Total design space size for a layer:
+(4+8+16)^2 * 4 = 3136
+'''
