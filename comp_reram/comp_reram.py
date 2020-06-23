@@ -1,3 +1,4 @@
+import os
 import time
 import torch
 import torch.nn as nn
@@ -129,11 +130,17 @@ class QuantEvaluator:
 
         self.global_index = 0
 
-        self.data_path = '/home/shuang91/data/imagenet/'
+        self.data_path = os.environ.get('IMAGENET', '/home/shuang91/data/imagenet/')
+        if not os.path.exists(self.data_path):
+            raise ValueError("ImageNet dataset not found ({}). Use: "
+                             "IMAGENET=/path/to/imagenet python comp_reram.py".format(self.data_path))
         traindir = os.path.join(self.data_path, 'train')
         print(traindir)
         valdir = os.path.join(self.data_path, 'val')
         print(valdir)
+        if not os.path.exists(valdir):
+            raise ValueError("Invalid ImageNet data set format. "
+                             "The 'val' directory not found in {}".format(self.data_path))
         normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                          std=[0.229, 0.224, 0.225])
 
@@ -172,7 +179,11 @@ class QuantEvaluator:
 
         self.global_index += 1
 
-        log_file = open("./logs/"+str(self.global_index)+".txt", "w")
+        
+        log_dir = os.environ.get("LOGDIR", "./logs/")
+        if not os.path.exists(log_dir):
+            os.makedirs(log_dir, exist_ok=True)
+        log_file = open(log_dir + str(self.global_index) + ".txt", "w")
 
         t_start = time.time()
 
