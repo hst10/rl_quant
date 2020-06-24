@@ -75,7 +75,7 @@ def test_mvm(mvm_model):
         
         curr_time = time.time()
 
-        print("batch_idx = ", batch_idx)
+        print(f"batch_idx = {batch_idx}")
         target = target.cuda()
         data_var = torch.autograd.Variable(data.cuda(), volatile=True)
         target_var = torch.autograd.Variable(target, volatile=True)
@@ -105,7 +105,7 @@ def test_mvm(mvm_model):
                            epoch, batch_idx, len(testloader), 100. *float(batch_idx)/len(testloader),
                            loss=losses, top1=top1, top5=top5))  
 
-        print(time.time() - curr_time)
+        print(f"batch processing time: {time.time() - curr_time}")
 
         if batch_idx == 1:
             break
@@ -135,9 +135,9 @@ class QuantEvaluator:
             raise ValueError("ImageNet dataset not found ({}). Use: "
                              "IMAGENET=/path/to/imagenet python comp_reram.py".format(self.data_path))
         traindir = os.path.join(self.data_path, 'train')
-        print(traindir)
+        print(f"traindir = {traindir}")
         valdir = os.path.join(self.data_path, 'val')
-        print(valdir)
+        print(f"valdir   = {valdir}")
         if not os.path.exists(valdir):
             raise ValueError("Invalid ImageNet data set format. "
                              "The 'val' directory not found in {}".format(self.data_path))
@@ -146,7 +146,7 @@ class QuantEvaluator:
 
         cudnn.benchmark = True
 
-        print("BATCH SIZE === ", batch_size)
+        print(f"batch_size = {batch_size}")
 
         self.criterion = nn.CrossEntropyLoss()
 
@@ -157,23 +157,23 @@ class QuantEvaluator:
             normalize,
         ]))
 
-        print("test_dataset init done! ")
+        # print("test_dataset init done! ")
 
         self.testloader = torch.utils.data.DataLoader(
             self.test_dataset,
             batch_size=batch_size, shuffle=False,
             num_workers=workers, pin_memory=True,drop_last=True)
 
-        print("testloader init done! ")
+        # print("testloader init done! ")
 
         self.iter_test = iter(self.testloader)
 
-        print("QuantEvaluator init done! ")
+        # print("QuantEvaluator init done! ")
 
     def explore(self):
         (data, target) = next(self.iter_test)
-        print("data = ", data)
-        print("target = ", target)
+        # print("data = ", data)
+        # print("target = ", target)
 
     def evaluate(self, quant_cfg=None, quiet=False):
 
@@ -187,11 +187,11 @@ class QuantEvaluator:
 
         t_start = time.time()
 
-        print(quant_cfg)
+        print(f"quant_cfg = {quant_cfg}")
         log_file.write(str(quant_cfg)+'\n')
 
 
-        print("AAAAAAAAAAAAAAAAAAAAAA")
+        # print("AAAAAAAAAAAAAAAAAAAAAA")
 
         model_mvm = None
         if self.dnn_model is vgg16 and quant_cfg is not None:
@@ -206,7 +206,7 @@ class QuantEvaluator:
             model_mvm = self.dnn_model(pretrained=True, 
                                   quant_cfg=quant_cfg)
 
-        print("BBBBBBBBBBBBBBBBBBBBBBBBBBB")
+        # print("BBBBBBBBBBBBBBBBBBBBBBBBBBB")
 
         model_mvm.cuda()
 
@@ -220,10 +220,10 @@ class QuantEvaluator:
         # print("output_golden = ", output_golden)
         # print("target_var = ", target_var.item())
 
-        print("CCCCCCCCCCCCCCCCCCCCCCCCCCC")
+        # print("CCCCCCCCCCCCCCCCCCCCCCCCCCC")
 
         if not quiet:
-            print("Original model loss = ", loss_golden.data.item())
+            print(f"original model loss = {loss_golden.data.item()}")
             log_file.write(str(loss_golden.data.item())+'\n')
 
         output = model_mvm(data_var)
@@ -231,8 +231,8 @@ class QuantEvaluator:
         # print("output = ", output)
 
         if not quiet:
-            print("Quantized model loss = ", loss.data.item())
-            print("Evaluation time = ", time.time() - t_start)
+            print(f"quantized model loss = {loss.data.item()}")
+            print(f"evaluation time = {time.time() - t_start}")
             log_file.write(str(loss.data.item())+'\n')
             log_file.write(str(time.time() - t_start)+'\n')
 
@@ -266,7 +266,7 @@ if __name__ == "__main__":
     # loss = QE.evaluate(quant_cfg=cfg)
     loss = QE.evaluate(quant_cfg=[(2,1,4,4,4,4,9,4,4)]*13)
     # loss = QE.evaluate()
-    print(loss)
+    print(f"loss = {loss}")
 
 '''
 parameters      Meaning                                         possible values         default value

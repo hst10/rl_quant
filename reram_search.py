@@ -188,7 +188,7 @@ class QuantEnv:
         model_info = np.array(model_info, 'float')
         print('=> shape of feature (n_layer * n_dim): {}'.format(model_info.shape))
         assert len(model_info.shape) == 2, model_info.shape
-        print("model_info.shape[1] = ", model_info.shape[1])
+        # print(f"model_info.shape[1] = {model_info.shape[1]}")
         for i in range(model_info.shape[1]):
             fmin = min(model_info[:, i])
             fmax = max(model_info[:, i])
@@ -208,9 +208,9 @@ def train(num_episode, agent, env, output, debug=False):
     episode_reward = 0.
     observation = None
     T = []  # trajectory
+    print(f"episode = {episode}")
     while episode < num_episode:  # counting based on episode
         # reset if it is the start of episode
-        print("episode = ", episode)
         if observation is None:
             observation = deepcopy(env.reset())
             agent.reset(observation)
@@ -290,6 +290,9 @@ def train(num_episode, agent, env, output, debug=False):
 
             text_writer.write('best reward: {}\n'.format(best_reward))
             text_writer.write('best policy: {}\n'.format(best_policy))
+
+            print(f"episode = {episode}")
+
     text_writer.close()
     return best_policy, best_reward
 
@@ -363,7 +366,7 @@ if __name__ == "__main__":
     nb_states = env.layer_feature.shape[1]
     nb_actions = len(tunable_params)
 
-    print("Creating  DDPG agent ...")
+    print("Creating DDPG agent ...")
 
     agent = DDPG(nb_states, nb_actions, args)
 
