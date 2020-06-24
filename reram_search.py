@@ -8,7 +8,7 @@ from copy import deepcopy
 from lib.rl.ddpg import DDPG
 from tensorboardX import SummaryWriter
 
-sys.path.insert(0, "/home/shuang91/rl_quant/comp_reram")
+sys.path.append(os.path.join(os.getcwd(), "comp_reram"))
 
 from comp_reram import *
 
