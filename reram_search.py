@@ -1,9 +1,11 @@
 import os
 import sys
-import torch
+import signal
 import argparse
-import numpy as np
 import math
+import threading
+import torch
+import numpy as np
 from copy import deepcopy
 from lib.rl.ddpg import DDPG
 from tensorboardX import SummaryWriter
@@ -36,16 +38,18 @@ vgg16_info = \
  # [0,   4096,  4096, 1,     4096*4096,        4096, 15 ], \
  # [0,   4096,  1000, 1,     4096*1000,        4096, 16 ]]
 
-# tunable_params = [4,8,4,8,9,4,8]
-tunable_params = [16,8,16,8,9]
+# tunable_params = [4, 8, 4, 8, 9, 4, 8]
+tunable_params = [16, 8, 16, 8, 9]
 
 vgg16_info = [ lst+tunable_params for lst in vgg16_info ]
 
+
 def prGreen(prt): print("\033[92m {}\033[00m" .format(prt))
+
 
 class QuantEnv:
     def __init__(self, model_info, batch_size=16):
-        self.quant_scheme = [] # quantization strategy
+        self.quant_scheme = []  # quantization strategy
         self.layer_feature = self.normalize_feature(model_info)
         self.wsize_list = [6*1*5*5, 16*6*5*5, 120*16*5*5, 10*120*1*1]
         self.cur_ind = 0
@@ -83,7 +87,6 @@ class QuantEnv:
         model_info = np.array(info, 'float')[:, 3:5]
         sum_quant = sum(sum(model_info))
         return model_info / sum_quant
-
 
     def reward(self, loss_diff, quant_scheme):
         return -(loss_diff/10 + self.cost_estimate(quant_scheme))
@@ -198,17 +201,64 @@ class QuantEnv:
         return model_info
 
 
-def train(num_episode, agent, env, output, debug=False):
-    # best record
-    best_reward = -math.inf
-    best_policy = []
+def load_state(checkpoint_dir, agent):
+    agent.load_weights(checkpoint_dir)
+    train_state_file = os.path.join(checkpoint_dir, 'train_state.pkl')
 
-    agent.is_training = True
-    step = episode = episode_steps = 0
-    episode_reward = 0.
+    train_state = {}
+    if os.path.exists(train_state_file):
+        train_state = torch.load(train_state_file)
+
+    if not isinstance(train_state, dict):
+        print("[ERROR]: Train state file does not store python dictionary (type = {})".format(type(train_state)))
+        train_state = {}
+    return train_state
+
+
+def save_state(checkpoint_dir, agent, **kwargs):
+    agent.save_model(checkpoint_dir)
+    torch.save(kwargs, os.path.join(checkpoint_dir, 'train_state.pkl'))
+
+
+def train(num_episode, agent, env, **kwargs):
+    """
+    Args:
+        num_episode (int): Number of episodes to play.
+        agent (DDPG): RL agent.
+        env (QuantEnv): RL environment
+        kwargs (dict): Additional arguments
+    """
+    #
+    stop_event = threading.Event()
+    def _signal_handler(signum, frame):  # noqa e306
+        stop_event.set()
+    signal.signal(signal.SIGUSR1, _signal_handler)
+
+    output = kwargs.get('output', './save')
+    debug = kwargs.get('debug', False)
+    warmup = kwargs.get('warmup', 20)
+    n_update = kwargs.get('n_update', 20)
+
+    tfwriter = SummaryWriter(logdir=output)
+    text_writer = open(os.path.join(output, 'log.txt'), 'w')
+
+    # Variables to serialize (+ agent)
+    train_state = load_state(output, agent)
+    if len(train_state) != 0:
+        print(f"[INFO] Restoring train state from path: {output} ({train_state})")
+    best_reward = train_state.get('best_reward', -math.inf)
+    best_policy = train_state.get('best_policy', [])
+    step = train_state.get('step', 0)
+    episode = train_state.get('episode', 0)
+
+    # Variables that do not need to be serialized
     observation = None
-    T = []  # trajectory
+    episode_steps = 0
+    episode_reward = 0.
+    trajectory = []
+
     print(f"episode = {episode}")
+    agent.is_training = True
     while episode < num_episode:  # counting based on episode
         # reset if it is the start of episode
         if observation is None:
@@ -216,7 +266,7 @@ def train(num_episode, agent, env, output, debug=False):
             agent.reset(observation)
 
         # agent pick action ...
-        if episode <= args.warmup:
+        if episode <= warmup:
             action = agent.random_action()
         else:
             action = agent.select_action(observation, episode=episode)
@@ -225,11 +275,15 @@ def train(num_episode, agent, env, output, debug=False):
         observation2, reward, done, info = env.step(action)
         observation2 = deepcopy(observation2)
 
-        T.append([reward, deepcopy(observation), deepcopy(observation2), action, done])
+        trajectory.append([reward, deepcopy(observation), deepcopy(observation2), action, done])
 
-        # [optional] save intermideate model
-        if episode % int(num_episode / 10) == 0:
-            agent.save_model(output)
+        # [optional] save intermediate model
+        if stop_event.is_set() or episode % int(num_episode / 10) == 0:
+            save_state(output, agent, best_reward=best_reward, best_policy=best_policy, step=step, episode=episode)
+
+        if stop_event.is_set():
+            print("[WARNING] Stop event is set, exiting ...")
+            break
 
         # update
         step += 1
@@ -238,42 +292,33 @@ def train(num_episode, agent, env, output, debug=False):
         observation = deepcopy(observation2)
 
         if done:  # end of episode
+            msg = '#{}: episode_reward:{:.4f} acc: {:.4f}, weight: {:.4f} MB'.format(
+                episode, episode_reward, info['loss'], info['w_ratio'] * 1. / 8e6)
+            text_writer.write(msg + '\n')
             if debug:
-                print('#{}: episode_reward:{:.4f} acc: {:.4f}, weight: {:.4f} MB'.format(episode, episode_reward,
-                                                                                         info['loss'],
-                                                                                         info['w_ratio'] * 1. / 8e6))
-            text_writer.write(
-                '#{}: episode_reward:{:.4f} acc: {:.4f}, weight: {:.4f} MB\n'.format(episode, episode_reward,
-                                                                                     info['loss'],
-                                                                                     info['w_ratio'] * 1. / 8e6))
-            final_reward = T[-1][0]
+                print(msg)
+
+            final_reward = trajectory[-1][0]
             # agent observe and update policy
-            for i, (r_t, s_t, s_t1, a_t, done) in enumerate(T):
+            for i, (r_t, s_t, s_t1, a_t, done) in enumerate(trajectory):
                 agent.observe(final_reward, s_t, s_t1, a_t, done)
-                if episode > args.warmup:
-                    for i in range(args.n_update):
+                if episode > warmup:
+                    for _ in range(n_update):
                         agent.update_policy()
 
-            agent.memory.append(
-                observation,
-                agent.select_action(observation, episode=episode),
-                0., False
-            )
+            agent.memory.append(observation, agent.select_action(observation, episode=episode), 0., False)
 
             # reset
             observation = None
             episode_steps = 0
             episode_reward = 0.
             episode += 1
-            T = []
+            trajectory = []
 
             if final_reward > best_reward:
                 best_reward = final_reward
                 best_policy = env.quant_scheme
 
-            value_loss = agent.get_value_loss()
-            policy_loss = agent.get_policy_loss()
-            delta = agent.get_delta()
             tfwriter.add_scalar('reward/last', final_reward, episode)
             tfwriter.add_scalar('reward/best', best_reward, episode)
             tfwriter.add_scalar('info/loss', info['loss'], episode)
@@ -281,15 +326,15 @@ def train(num_episode, agent, env, output, debug=False):
             tfwriter.add_scalar('info/w_ratio', info['w_ratio'], episode)
             tfwriter.add_text('info/best_policy', str(best_policy), episode)
             tfwriter.add_text('info/current_policy', str(env.quant_scheme), episode)
-            tfwriter.add_scalar('value_loss', value_loss, episode)
-            tfwriter.add_scalar('policy_loss', policy_loss, episode)
-            tfwriter.add_scalar('delta', delta, episode)
+            tfwriter.add_scalar('value_loss', agent.get_value_loss(), episode)
+            tfwriter.add_scalar('policy_loss', agent.get_policy_loss(), episode)
+            tfwriter.add_scalar('delta', agent.get_delta(), episode)
             # record the preserve rate for each layer
             # for i, preserve_rate in enumerate(env.quant_scheme):
             #     tfwriter.add_scalar('preserve_rate_w/{}'.format(i), preserve_rate, episode)
 
-            text_writer.write('best reward: {}\n'.format(best_reward))
-            text_writer.write('best policy: {}\n'.format(best_policy))
+            text_writer.write(f"best reward: {best_reward}\n")
+            text_writer.write(f"best policy: {best_policy}\n")
 
             print(f"episode = {episode}")
 
@@ -297,8 +342,17 @@ def train(num_episode, agent, env, output, debug=False):
     return best_policy, best_reward
 
 
+def print_stop_me_message():
+    print("--------------------------------------------------------------")
+    print("ReRAM Search process is running, process ID = {}.".format(os.getpid()))
+    print("Send me a USR1 signal to request stop :")
+    print("    kill -USR1 {}".format(os.getpid()))
+    print("I will terminate myself as soon as I complete playing current episode.")
+    print("--------------------------------------------------------------")
+    sys.stdout.flush()
 
-if __name__ == "__main__":
+
+def main():
     parser = argparse.ArgumentParser(description='PyTorch Reinforcement Learning')
 
     parser.add_argument('--suffix', default=None, type=str, help='suffix to help you remember what experiment you ran')
@@ -352,24 +406,31 @@ if __name__ == "__main__":
     # parser.add_argument('--arch', '-a', metavar='ARCH', default='mobilenet_v2', choices=model_names,
     #                 help='model architecture:' + ' | '.join(model_names) + ' (default: mobilenet_v2)')
     # device options
-    parser.add_argument('--gpu_id', default='3', type=str,
-                        help='id(s) for CUDA_VISIBLE_DEVICES')
-
+    parser.add_argument('--gpu_id', default='3', type=str, help='id(s) for CUDA_VISIBLE_DEVICES')
 
     args = parser.parse_args()
 
-    tfwriter = SummaryWriter(logdir=args.output)
-    text_writer = open(os.path.join(args.output, 'log.txt'), 'w')
+    # Create output directory
+    if not os.path.exists(args.output):
+        os.makedirs(args.output, exist_ok=True)
+    if not os.path.isdir(args.output):
+        raise ValueError("Output directory is not a directory: {}".format(args.output))
 
+    print("Creating QuantEnv environment ...")
     env = QuantEnv(vgg16_info, batch_size=args.batch_size)
 
+    print("Creating DDPG agent ...")
     nb_states = env.layer_feature.shape[1]
     nb_actions = len(tunable_params)
-
-    print("Creating DDPG agent ...")
-
     agent = DDPG(nb_states, nb_actions, args)
 
     print("Start training ...")
+    print_stop_me_message()
+    best_policy, best_reward = train(args.train_episode, agent, env, output=args.output, debug=args.debug,
+                                     warmup=args.warmup, n_update=args.n_update)
 
-    best_policy, best_reward = train(args.train_episode, agent, env, args.output, debug=args.debug)
+    print(f"Best policy: {best_policy}, best reward: {best_reward}")
+
+
+if __name__ == '__main__':
+    main()

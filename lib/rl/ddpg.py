@@ -212,17 +212,19 @@ class DDPG(object):
         # self.random_process.reset_states()
 
     def load_weights(self, output):
-        if output is None: return
+        actor_file = '{}/actor.pkl'.format(output)
+        critic_file = '{}/critic.pkl'.format(output)
 
-        self.actor.load_state_dict(
-            torch.load('{}/actor.pkl'.format(output))
-        )
+        if output is None or not os.path.exists(actor_file) or not os.path.exists(critic_file):
+            return
 
-        self.critic.load_state_dict(
-            torch.load('{}/critic.pkl'.format(output))
-        )
+        self.actor.load_state_dict(torch.load(actor_file))
+        self.critic.load_state_dict(torch.load(critic_file))
 
     def save_model(self, output):
+        if not os.path.exists(output):
+            os.makedirs(output)
+
         torch.save(
             self.actor.state_dict(),
             '{}/actor.pkl'.format(output)
