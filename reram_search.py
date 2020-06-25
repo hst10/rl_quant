@@ -276,16 +276,6 @@ def train(num_episode, agent, env, **kwargs):
 
         trajectory.append([reward, deepcopy(observation), deepcopy(observation2), action, done])
 
-        # [optional] save intermediate model
-        if stop_event.is_set() or episode % int(num_episode / 10) == 0:
-            save_state(output, agent, best_reward=best_reward, best_policy=best_policy, step=step, episode=episode,
-                       observation=observation, episode_steps=episode_steps, episode_reward=episode_reward,
-                       trajectory=trajectory)
-
-        if stop_event.is_set():
-            print("[WARNING] Stop event is set, exiting ...")
-            break
-
         # update
         step += 1
         episode_steps += 1
@@ -301,7 +291,7 @@ def train(num_episode, agent, env, **kwargs):
 
             final_reward = trajectory[-1][0]
             # agent observe and update policy
-            for i, (r_t, s_t, s_t1, a_t, done) in enumerate(trajectory):
+            for _, (r_t, s_t, s_t1, a_t, done) in enumerate(trajectory):
                 agent.observe(final_reward, s_t, s_t1, a_t, done)
                 if episode > warmup:
                     for _ in range(n_update):
@@ -310,11 +300,8 @@ def train(num_episode, agent, env, **kwargs):
             agent.memory.append(observation, agent.select_action(observation, episode=episode), 0., False)
 
             # reset
-            observation = None
-            episode_steps = 0
-            episode_reward = 0.
+            observation, episode_steps, episode_reward, trajectory = None, 0, 0, []
             episode += 1
-            trajectory = []
 
             if final_reward > best_reward:
                 best_reward = final_reward
@@ -338,6 +325,16 @@ def train(num_episode, agent, env, **kwargs):
             text_writer.write(f"best policy: {best_policy}\n")
 
             print(f"episode = {episode}")
+
+        # [optional] save intermediate model
+        if stop_event.is_set() or episode % int(num_episode / 10) == 0:
+            save_state(output, agent, best_reward=best_reward, best_policy=best_policy, step=step, episode=episode,
+                       observation=observation, episode_steps=episode_steps, episode_reward=episode_reward,
+                       trajectory=trajectory)
+
+        if stop_event.is_set():
+            print("[WARNING] Stop event is set, exiting ...")
+            break
 
     text_writer.close()
     return best_policy, best_reward
