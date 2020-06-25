@@ -246,16 +246,15 @@ def train(num_episode, agent, env, **kwargs):
     train_state = load_state(output, agent)
     if len(train_state) != 0:
         print(f"[INFO] Restoring train state from path: {output} ({train_state})")
+
     best_reward = train_state.get('best_reward', -math.inf)
     best_policy = train_state.get('best_policy', [])
     step = train_state.get('step', 0)
     episode = train_state.get('episode', 0)
-
-    # Variables that do not need to be serialized
-    observation = None
-    episode_steps = 0
-    episode_reward = 0.
-    trajectory = []
+    observation = train_state.get('observation', None)
+    episode_steps = train_state.get('episode_steps', 0)
+    episode_reward = train_state.get('episode_reward', 0)
+    trajectory = train_state.get('trajectory', [])
 
     print(f"episode = {episode}")
     agent.is_training = True
@@ -279,7 +278,9 @@ def train(num_episode, agent, env, **kwargs):
 
         # [optional] save intermediate model
         if stop_event.is_set() or episode % int(num_episode / 10) == 0:
-            save_state(output, agent, best_reward=best_reward, best_policy=best_policy, step=step, episode=episode)
+            save_state(output, agent, best_reward=best_reward, best_policy=best_policy, step=step, episode=episode,
+                       observation=observation, episode_steps=episode_steps, episode_reward=episode_reward,
+                       trajectory=trajectory)
 
         if stop_event.is_set():
             print("[WARNING] Stop event is set, exiting ...")
