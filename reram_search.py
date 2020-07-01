@@ -115,13 +115,12 @@ class QuantEnv:
             # acc = 0 # TODO
             loss, loss_ref = self.QE.evaluate(q_scheme)
             loss_diff = loss - loss_ref
-            print("quant_scheme = ", self.quant_scheme)
-            print("loss = ", loss)
-            print("loss_diff = ", loss_diff)
-
+            print(f"quant_scheme = {self.quant_scheme}")
+            print(f"loss = {loss}")
+            print(f"loss_diff = {loss_diff}")
 
             reward = self.reward(loss_diff, self.quant_scheme)
-            print("reward = ", reward)
+            print(f"reward = {reward}")
 
             log_file.write(str(self.quant_scheme) + "\n")
             log_file.write(str(loss) + "\n")
@@ -301,17 +300,17 @@ def train(num_episode, agent, env, output, debug=False):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='PyTorch Reinforcement Learning')
 
-    parser.add_argument('--suffix', default=None, type=str, help='suffix to help you remember what experiment you ran')
+    # parser.add_argument('--suffix', default=None, type=str, help='suffix to help you remember what experiment you ran')
 
     parser.add_argument('-b', '--batch-size', default=1, type=int, metavar='N', help='mini-batch size (default: 1)')
     # env
-    parser.add_argument('--dataset', default='imagenet', type=str, help='dataset to use)')
-    parser.add_argument('--dataset_root', default='data/imagenet', type=str, help='path to dataset)')
-    parser.add_argument('--preserve_ratio', default=0.1, type=float, help='preserve ratio of the model size')
-    parser.add_argument('--min_bit', default=3, type=float, help='minimum bit to use')
-    parser.add_argument('--max_bit', default=6, type=float, help='maximum bit to use')
-    parser.add_argument('--float_bit', default=32, type=int, help='the bit of full precision float')
-    parser.add_argument('--is_pruned', dest='is_pruned', action='store_true')
+    # parser.add_argument('--dataset', default='imagenet', type=str, help='dataset to use)')
+    # parser.add_argument('--dataset_root', default='data/imagenet', type=str, help='path to dataset)')
+    # parser.add_argument('--preserve_ratio', default=0.1, type=float, help='preserve ratio of the model size')
+    # parser.add_argument('--min_bit', default=3, type=float, help='minimum bit to use')
+    # parser.add_argument('--max_bit', default=6, type=float, help='maximum bit to use')
+    # parser.add_argument('--float_bit', default=32, type=int, help='the bit of full precision float')
+    # parser.add_argument('--is_pruned', dest='is_pruned', action='store_true')
     # ddpg
     parser.add_argument('--hidden1', default=300, type=int, help='hidden num of first fully connect layer')
     parser.add_argument('--hidden2', default=300, type=int, help='hidden num of second fully connect layer')
@@ -331,29 +330,29 @@ if __name__ == "__main__":
                         help='delta decay during exploration')
     parser.add_argument('--n_update', default=1, type=int, help='number of rl to update each time')
     # training
-    parser.add_argument('--max_episode_length', default=1e9, type=int, help='')
+    # parser.add_argument('--max_episode_length', default=1e9, type=int, help='')
     parser.add_argument('--output', default='./save', type=str, help='')
     parser.add_argument('--debug', dest='debug', action='store_true')
     parser.add_argument('--init_w', default=0.003, type=float, help='')
     parser.add_argument('--train_episode', default=600, type=int, help='train iters each timestep')
     parser.add_argument('--epsilon', default=50000, type=int, help='linear decay of exploration policy')
     parser.add_argument('--seed', default=234, type=int, help='')
-    parser.add_argument('--n_worker', default=32, type=int, help='number of data loader worker')
-    parser.add_argument('--data_bsize', default=256, type=int, help='number of data batch size')
-    parser.add_argument('--finetune_epoch', default=1, type=int, help='')
-    parser.add_argument('--finetune_gamma', default=0.8, type=float, help='finetune gamma')
-    parser.add_argument('--finetune_lr', default=0.001, type=float, help='finetune gamma')
-    parser.add_argument('--finetune_flag', default=True, type=bool, help='whether to finetune')
-    parser.add_argument('--use_top5', default=False, type=bool, help='whether to use top5 acc in reward')
-    parser.add_argument('--train_size', default=20000, type=int, help='number of train data size')
-    parser.add_argument('--val_size', default=10000, type=int, help='number of val data size')
-    parser.add_argument('--resume', default='default', type=str, help='Resuming model path for testing')
+    # parser.add_argument('--n_worker', default=32, type=int, help='number of data loader worker')
+    # parser.add_argument('--data_bsize', default=256, type=int, help='number of data batch size')
+    # parser.add_argument('--finetune_epoch', default=1, type=int, help='')
+    # parser.add_argument('--finetune_gamma', default=0.8, type=float, help='finetune gamma')
+    # parser.add_argument('--finetune_lr', default=0.001, type=float, help='finetune gamma')
+    # parser.add_argument('--finetune_flag', default=True, type=bool, help='whether to finetune')
+    # parser.add_argument('--use_top5', default=False, type=bool, help='whether to use top5 acc in reward')
+    # parser.add_argument('--train_size', default=20000, type=int, help='number of train data size')
+    # parser.add_argument('--val_size', default=10000, type=int, help='number of val data size')
+    # parser.add_argument('--resume', default='default', type=str, help='Resuming model path for testing')
     # Architecture
     # parser.add_argument('--arch', '-a', metavar='ARCH', default='mobilenet_v2', choices=model_names,
     #                 help='model architecture:' + ' | '.join(model_names) + ' (default: mobilenet_v2)')
     # device options
-    parser.add_argument('--gpu_id', default='3', type=str,
-                        help='id(s) for CUDA_VISIBLE_DEVICES')
+    # parser.add_argument('--gpu_id', default='3', type=str,
+    #                     help='id(s) for CUDA_VISIBLE_DEVICES')
 
 
     args = parser.parse_args()
