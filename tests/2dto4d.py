@@ -88,6 +88,20 @@ def run_impl_using_reshape(x_bars: torch.Tensor, weight_xbar: torch.Tensor, num_
         >>> import torch
         >>> t = torch.arange(1, 25).reshape(4, 6)
         >>> t3 = torch.as_strided(t, (2, 3, 2, 2), (12, 2, 6, 1))
+
+        Input 4x6:
+            [ 1,  2,  3,  4,  5,  6]
+            [ 7,  8,  9, 10, 11, 12]
+            [13, 14, 15, 16, 17, 18]
+            [19, 20, 21, 22, 23, 24]
+
+        Output 2x3x2x2:
+            [ 1,  2]    [ 3,  4]    [ 5,  6]
+            [ 7,  8]    [ 9, 10]    [11, 12]
+
+            [13, 14]    [15, 16]    [17, 18]
+            [19, 20]    [21, 22]    [23, 24]
+
     Returns:
         Total running time in seconds.
     I have not done extensive performance testing, but based on one config this is as fast as implementaion based on
