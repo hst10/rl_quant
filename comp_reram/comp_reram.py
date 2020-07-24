@@ -209,8 +209,8 @@ class QuantEvaluator:
 
         output_golden = self.model_golden(data_var)
         loss_golden   = self.criterion(output_golden, target_var)
+        print(f"output_golden = {output_golden}")
 
-        # print("output_golden = ", output_golden)
         # print("target_var = ", target_var.item())
 
         if not quiet:
@@ -219,7 +219,7 @@ class QuantEvaluator:
 
         output = model_mvm(data_var)
         loss   = self.criterion(output, target_var)
-        # print("output = ", output)
+        print(f"output = {output}")
 
         if not quiet:
             print(f"quantized model loss = {loss.data.item()}")
@@ -285,13 +285,9 @@ class QuantEvaluator:
             top5.update(prec5[0], data.size(0))
 
             print(f'[{i+1}/{num_batches}({ 100. * float(i) / num_batches  }%)]\t'
-                  f'Loss {losses.val:.3f} ({losses.avg:.4f})\t'
-                  f'Prec@1 {top1.val:.3f} ({top1.avg:.3f})\t'
-                  f'Prec@5 {top5.val:.3f} ({top5.avg:.3f})')
-
-            print(f'Loss Ref {losses_golden.val:.3f} ({losses_golden.avg:.4f})\t'
-                  f'Prec@1 Ref {top1_golden.val:.3f} ({top1_golden.avg:.3f})\t'
-                  f'Prec@5 Ref {top5_golden.val:.3f} ({top5_golden.avg:.3f})')
+                  f'Loss    {losses.val:.3f} ({losses.avg:.4f})\t'
+                  f'Prec@1    {top1.val:.3f} ({top1.avg:.3f})\t'
+                  f'Prec@5    {top5.val:.3f} ({top5.avg:.3f})')
 
         return top1.avg, top5.avg, top1_golden.avg, top5_golden.avg
 
@@ -299,8 +295,8 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     
-    parser.add_argument('-b', '--batch-size', default=4, type=int,
-                         metavar='N', help='mini-batch size (default: 4)')
+    parser.add_argument('-b', '--batch-size', default=1, type=int,
+                         metavar='N', help='mini-batch size (default: 1)')
 
     args = parser.parse_args()
 
@@ -322,9 +318,16 @@ if __name__ == "__main__":
     # loss = QE.evaluate(quant_cfg=[(2,1,4,4,4,4,9,4,4)]*13)
     # print(f"loss = {loss}")
 
-    prec1, prec5, prec1_ref, prec5_ref = QE.evaluate_accuracy(quant_cfg=[(2,1,16,12,16,12,9,16,12)]*13, num_batches=2)
+    # prec1, prec5, prec1_ref, prec5_ref = QE.evaluate_accuracy(quant_cfg=[(2,1,16,12,16,12,9,16,12)]*13, num_batches=2)
+    # prec1, prec5, prec1_ref, prec5_ref = QE.evaluate_accuracy(quant_cfg=[(2,1,32,24,32,24,9,32,24)]*13, num_batches=16)
     # prec1, prec5, prec1_ref, prec5_ref = QE.evaluate_accuracy(quant_cfg=cfg)
-    print(f"prec1 = {prec1}, prec5 = {prec5}, prec1_ref = {prec1_ref}, prec5 = {prec5_ref}")
+    # print(f"prec1 = {prec1}, prec5 = {prec5}, prec1_ref = {prec1_ref}, prec5_ref = {prec5_ref}")
+
+    # loss, loss_golden = QE.evaluate(quant_cfg=[(2,1,32,24,32,24,9,32,24)]*13)
+    # loss, loss_golden = QE.evaluate(quant_cfg=[(2,1,4,4,4,4,9,4,4)]*13)
+    loss, loss_golden = QE.evaluate(quant_cfg=[(2,1,4,1,4,1,9,4,1)]*13)
+    print(f"loss = {loss}, loss_golden = {loss_golden}")
+
 
 '''
 parameters      Meaning                                         possible values         default value
