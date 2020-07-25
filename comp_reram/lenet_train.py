@@ -12,6 +12,8 @@ from time import time
 
 from pytorch_mvm_class import *
 
+model_path = '/home/shuang91/rl_quant/comp_reram/models/'
+
 
 class lenet_mnist_mvm(nn.Module):
     def __init__(self, quant_cfg):
@@ -409,7 +411,7 @@ def exhaust_adc():
     for task in task_queue:
         net = lenet_cifar10_mvm_adc(task)
         # net = Net_mnist()
-        load_model(net, './models/cifar_net_66.pth')
+        load_model(net, f'{model_path}/cifar_net_66.pth')
         acc = evaluate(net, testloader, gpu=True)
         res = ", ".join([ str(val) for val in task ]) + ', ' + str(acc)
         print(res)
@@ -417,26 +419,53 @@ def exhaust_adc():
             fout.write(res + "\n")
 
 def evaluate_quant(quant_cfg, dataset):
-    start_time = time.time()
-
     if dataset == 'cifar10':
         trainloader, testloader = prepare_cifar10(batch_size=512)
         net_mvm = lenet_cifar10_mvm(quant_cfg)
         # net     = Net_cifar10()
-        load_model(net_mvm, './models/cifar_net_66.pth')
-        # load_model_manual(net, net_mvm, './models/cifar_net_66.pth')
+        load_model(net_mvm, f'{model_path}/cifar_net_66.pth')
+        # load_model_manual(net, net_mvm, f'{model_path}/cifar_net_66.pth')
     elif dataset == 'mnist':
         trainloader, testloader = prepare_mnist(batch_size=512)
         net_mvm = lenet_mnist_mvm(quant_cfg)
-        load_model(net_mvm, './models/mnist_net_98.92.pth')
+        load_model(net_mvm, f'{model_path}/mnist_net_98.92.pth')
 
     acc = evaluate(net_mvm, testloader, gpu=True)
-    end_time = time.time()
-    print(f"acc = {acc}")
-    print(f"time = {end_time - start_time} s")
+
+    return acc
+
+def evaluate_original(dataset):
+    if dataset == 'cifar10':
+        trainloader, testloader = prepare_cifar10(batch_size=512)
+        # net_mvm = lenet_cifar10_mvm(quant_cfg)
+        net = Net_cifar10()
+        load_model(net, f'{model_path}/cifar_net_66.pth')
+        # load_model_manual(net, net_mvm, f'{model_path}/cifar_net_66.pth')
+    elif dataset == 'mnist':
+        trainloader, testloader = prepare_mnist(batch_size=512)
+        # net_mvm = lenet_mnist_mvm(quant_cfg)
+        net = Net_mnist()
+        load_model(net, f'{model_path}/mnist_net_98.92.pth')
+
+    acc = evaluate(net, testloader, gpu=True)
+
+    return acc
+
 
 if __name__ == '__main__':
     # evaluate_quant(quant_cfg=[(32,24,32,24,10,32,24)]*4, dataset='mnist')
     # evaluate_quant(quant_cfg=[(32,16,32,16,10,32,16)]*4, dataset='mnist')
-    evaluate_quant(quant_cfg=[(16,12,16,12,6,16,12)]*4, dataset='mnist')
-    # evaluate_quant(quant_cfg=[(8,4,8,4,10,8,4)]*4, dataset='mnist')
+    # evaluate_quant(quant_cfg=[(16,12,4,2,7,16,12)]*4, dataset='mnist')
+    # evaluate_quant(quant_cfg=[(4,1,4,1,3,4,1)]*4, dataset='mnist')
+    quant_cfg = [[4, 3, 16, 0,  4, 16, 12], \
+                 [4, 3, 16, 15, 4, 16, 12], \
+                 [4, 3, 16, 15, 4, 16, 12], \
+                 [4, 3, 16, 15, 4, 16, 12]]
+
+    start_time = time.time()
+
+    acc = evaluate_quant(quant_cfg=quant_cfg, dataset='mnist')
+
+    end_time = time.time()
+    print(f"acc = {acc}")
+    print(f"time = {end_time - start_time} s")

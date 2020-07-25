@@ -10,7 +10,8 @@ from tensorboardX import SummaryWriter
 
 sys.path.append(os.path.join(os.getcwd(), "comp_reram"))
 
-from comp_reram import *
+# from comp_reram import *
+from lenet_train import *
 
 # feature: (is_conv, in_channel, out_channel, filter_size, weight_size, in_feature, layer_idx, bits)
 lenet_info = \
@@ -49,20 +50,20 @@ class QuantEnv:
     def __init__(self, model_info, batch_size=16):
         self.quant_scheme = [] # quantization strategy
         self.layer_feature = self.normalize_feature(model_info)
-        self.wsize_list = [6*1*5*5, 16*6*5*5, 120*16*5*5, 10*120*1*1]
+        # self.wsize_list = [6*1*5*5, 16*6*5*5, 120*16*5*5, 10*120*1*1]
         self.cur_ind = 0
         # self.bound_list = [(2,5), (2,5), (2,5), (2,5), (4,9), (2,5), (2,5)]
         # self.bound_list = [(2,5), (2,5), (2,5), (2,5), (4,9)]
-        self.total_bitwidth_list = [8, 16, 32]
+        self.total_bitwidth_list = [4, 8, 16]
         self.adc_bitwidth_list = [4,5,6,7,8,9]
-        self.last_action = [(16,8,16,8,9)]
+        self.last_action = [(16,12,16,12,9)]
         self.org_acc = 0.9837
         self.best_reward = -math.inf
-        self.original_wsize = sum([ e*16 for e in self.wsize_list])
+        # self.original_wsize = sum([ e*16 for e in self.wsize_list])
 
-        self.bw_weights = self.norm_bw(vgg16_info)
+        self.bw_weights = self.norm_bw(lenet_info)
 
-        self.QE = QuantEvaluator(batch_size=batch_size)
+        # self.QE = QuantEvaluator(batch_size=batch_size)
 
         self.global_index = 0
 
@@ -73,38 +74,44 @@ class QuantEnv:
         return obs
 
     def cost_estimate(self, quant_scheme=None):
-        tmp = [ [(qs[0]+qs[1])/13, (qs[2]+qs[3])/13] for qs in quant_scheme ]
-        adc_tmp = float(sum([ qs[4] for qs in quant_scheme ])) / 13
+        num_of_layers = 4
+        tmp = [ [(qs[0])/num_of_layers, (qs[2])/num_of_layers] for qs in quant_scheme ]
+        adc_tmp = float(sum([ qs[4] for qs in quant_scheme ])) / num_of_layers
 
         qs_p = np.array(tmp, 'float')
+        # print(f'qs_p.shape = {qs_p.shape}')
+        # print(f'bw_weights.shape = {self.bw_weights.shape}')
         assert(qs_p.shape == self.bw_weights.shape)
         cost = qs_p * self.bw_weights * (1.25 ** adc_tmp)
         return sum(sum(cost))
 
     def norm_bw(self, info):
-        model_info = np.array(info, 'float')[:, 3:5]
+        model_info = np.array(info, 'float')[:, 4:6]
         sum_quant = sum(sum(model_info))
         return model_info / sum_quant
 
 
     def reward(self, loss_diff, quant_scheme):
-        return -(loss_diff/10 + self.cost_estimate(quant_scheme))
+        if loss_diff > 0.3:
+            return -(loss_diff*10 + self.cost_estimate(quant_scheme)) - 1000.0
+        else:
+            return -(loss_diff*10 + self.cost_estimate(quant_scheme))
 
     def step(self, action):
         action = self._action_wall(action)
         self.quant_scheme.append(action)
 
         # all the actions are made
-        if self.cur_ind == 12:
+        if self.cur_ind == 3:
 
             self.global_index += 1
 
-            log_file = open("./logs/"+str(self.global_index)+".txt", "a+")
+            # log_file = open("./logs_1/"+str(self.global_index)+".txt", "a+")
 
             # self._final_action_wall()
             assert len(self.quant_scheme) == len(self.layer_feature)
 
-            q_scheme = [ [2, 1]+(qs)+[16, 12] for qs in self.quant_scheme ]
+            q_scheme = [ (qs)+[16, 12] for qs in self.quant_scheme ]
 
             # for e in q_scheme:
             #     for i in [2, 3, 4, 5, 7, 8]:
@@ -115,36 +122,41 @@ class QuantEnv:
             #         e[i] = e[i] + e[i+1]
 
             # acc = 0 # TODO
-            loss, loss_ref = self.QE.evaluate(q_scheme)
-            loss_diff = loss - loss_ref
-            print(f"quant_scheme = {self.quant_scheme}")
-            print(f"loss = {loss}")
-            print(f"loss_diff = {loss_diff}")
+            # loss, loss_ref = self.QE.evaluate(q_scheme)
 
-            reward = self.reward(loss_diff, self.quant_scheme)
+            acc_mvm = evaluate_quant(q_scheme, 'mnist')
+            acc_ref = evaluate_original('mnist')
+
+            acc_diff = acc_ref - acc_mvm
+            print(f"quant_scheme = {self.quant_scheme}")
+            print(f"acc_mvm = {acc_mvm}")
+            print(f"acc_ref = {acc_ref}")
+            print(f"acc_diff = {acc_diff}")
+
+            reward = self.reward(acc_diff, self.quant_scheme)
             print(f"reward = {reward}")
 
-            log_file.write(str(self.quant_scheme) + "\n")
-            log_file.write(str(loss) + "\n")
-            log_file.write(str(loss_ref) + "\n")
-            log_file.write(str(loss_diff) + "\n")
-            log_file.write(str(reward) + "\n")
+            # log_file.write(str(self.quant_scheme) + "\n")
+            # log_file.write(str(acc_mvm) + "\n")
+            # log_file.write(str(acc_ref) + "\n")
+            # log_file.write(str(acc_diff) + "\n")
+            # log_file.write(str(reward) + "\n")
 
             w_size = 0# sum([ self.quant_scheme[i]*self.wsize_list[i] for i in range(len(self.quant_scheme)) ])
             w_size_ratio = 0# float(w_size) / float(self.original_wsize)
 
-            info_set = {'w_ratio': w_size_ratio, 'loss': loss, 'loss_diff': loss_diff, 'w_size': w_size}
+            info_set = {'w_ratio': w_size_ratio, 'acc_mvm': acc_mvm, 'acc_diff': acc_diff, 'w_size': w_size}
 
             if reward > self.best_reward:
                 self.best_reward = reward
-                prGreen('New best policy: {}, reward: {:.3f}, loss: {:.3f}, loss_diff: {:.3f}, w_ratio: {:.3f}'.format(
-                    self.quant_scheme, self.best_reward, loss, loss_diff, w_size_ratio))
+                prGreen('New best policy: {}, reward: {:.3f}, acc_mvm: {:.3f}, acc_diff: {:.3f}, w_ratio: {:.3f}'.format(
+                    self.quant_scheme, self.best_reward, acc_mvm, acc_diff, w_size_ratio))
 
             obs = self.layer_feature[self.cur_ind, :].copy()  # actually the same as the last state
             done = True
 
 
-            log_file.close()
+            # log_file.close()
             return obs, reward, done, info_set
 
         w_size = 0 #sum([ self.quant_scheme[i]*self.wsize_list[i] for i in range(len(self.quant_scheme)) ])
@@ -224,6 +236,7 @@ def train(num_episode, agent, env, output, debug=False):
 
         # env response with next_observation, reward, terminate_info
         observation2, reward, done, info = env.step(action)
+        print(f"DDPG action = {action}")
         observation2 = deepcopy(observation2)
 
         T.append([reward, deepcopy(observation), deepcopy(observation2), action, done])
@@ -241,11 +254,11 @@ def train(num_episode, agent, env, output, debug=False):
         if done:  # end of episode
             if debug:
                 print('#{}: episode_reward:{:.4f} acc: {:.4f}, weight: {:.4f} MB'.format(episode, episode_reward,
-                                                                                         info['loss'],
+                                                                                         info['acc_mvm'],
                                                                                          info['w_ratio'] * 1. / 8e6))
             text_writer.write(
                 '#{}: episode_reward:{:.4f} acc: {:.4f}, weight: {:.4f} MB\n'.format(episode, episode_reward,
-                                                                                     info['loss'],
+                                                                                     info['acc_mvm'],
                                                                                      info['w_ratio'] * 1. / 8e6))
             final_reward = T[-1][0]
             # agent observe and update policy
@@ -277,8 +290,8 @@ def train(num_episode, agent, env, output, debug=False):
             delta = agent.get_delta()
             tfwriter.add_scalar('reward/last', final_reward, episode)
             tfwriter.add_scalar('reward/best', best_reward, episode)
-            tfwriter.add_scalar('info/loss', info['loss'], episode)
-            tfwriter.add_scalar('info/loss_diff', info['loss_diff'], episode)
+            tfwriter.add_scalar('info/acc_mvm', info['acc_mvm'], episode)
+            tfwriter.add_scalar('info/acc_diff', info['acc_diff'], episode)
             tfwriter.add_scalar('info/w_ratio', info['w_ratio'], episode)
             tfwriter.add_text('info/best_policy', str(best_policy), episode)
             tfwriter.add_text('info/current_policy', str(env.quant_scheme), episode)
@@ -304,7 +317,7 @@ if __name__ == "__main__":
 
     # parser.add_argument('--suffix', default=None, type=str, help='suffix to help you remember what experiment you ran')
 
-    parser.add_argument('-b', '--batch-size', default=1, type=int, metavar='N', help='mini-batch size (default: 1)')
+    parser.add_argument('-b', '--batch-size', default=16, type=int, metavar='N', help='mini-batch size (default: 16)')
     # env
     # parser.add_argument('--dataset', default='imagenet', type=str, help='dataset to use)')
     # parser.add_argument('--dataset_root', default='data/imagenet', type=str, help='path to dataset)')
@@ -318,7 +331,7 @@ if __name__ == "__main__":
     parser.add_argument('--hidden2', default=300, type=int, help='hidden num of second fully connect layer')
     parser.add_argument('--lr_c', default=1e-3, type=float, help='learning rate for actor')
     parser.add_argument('--lr_a', default=1e-4, type=float, help='learning rate for actor')
-    parser.add_argument('--warmup', default=20, type=int,
+    parser.add_argument('--warmup', default=200, type=int,
                         help='time without training but only filling the replay memory')
     parser.add_argument('--discount', default=1., type=float, help='')
     parser.add_argument('--bsize', default=64, type=int, help='minibatch size')
@@ -333,12 +346,12 @@ if __name__ == "__main__":
     parser.add_argument('--n_update', default=1, type=int, help='number of rl to update each time')
     # training
     # parser.add_argument('--max_episode_length', default=1e9, type=int, help='')
-    parser.add_argument('--output', default='./save', type=str, help='')
+    parser.add_argument('--output', default='./save_1', type=str, help='')
     parser.add_argument('--debug', dest='debug', action='store_true')
     parser.add_argument('--init_w', default=0.003, type=float, help='')
-    parser.add_argument('--train_episode', default=600, type=int, help='train iters each timestep')
+    parser.add_argument('--train_episode', default=3000, type=int, help='train iters each timestep')
     parser.add_argument('--epsilon', default=50000, type=int, help='linear decay of exploration policy')
-    parser.add_argument('--seed', default=234, type=int, help='')
+    parser.add_argument('--seed', default=1, type=int, help='')
     # parser.add_argument('--n_worker', default=32, type=int, help='number of data loader worker')
     # parser.add_argument('--data_bsize', default=256, type=int, help='number of data batch size')
     # parser.add_argument('--finetune_epoch', default=1, type=int, help='')
@@ -362,7 +375,7 @@ if __name__ == "__main__":
     tfwriter = SummaryWriter(logdir=args.output)
     text_writer = open(os.path.join(args.output, 'log.txt'), 'w')
 
-    env = QuantEnv(vgg16_info, batch_size=args.batch_size)
+    env = QuantEnv(lenet_info, batch_size=args.batch_size)
 
     nb_states = env.layer_feature.shape[1]
     nb_actions = len(tunable_params)
